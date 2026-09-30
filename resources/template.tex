@@ -73,6 +73,7 @@ $if(fancy-enums)$
 $endif$
 $if(tables)$
 \usepackage{ctable}
+\usepackage{calc}
 \usepackage{float} % provides the H option for float placement
 $endif$
 $if(graphics)$
@@ -140,17 +141,11 @@ $endif$
 
 \begin{titlepage}
   \centering
-  \vspace*{0em}
-  \begin{figure}[htbp]
-    \centering
-    \Oldincludegraphics{resources/titelbild.png}
-  \end{figure}
+  \vspace*{12em}
 
-  \vspace{8em}
-
-  \Huge{OParl 1.1} \\
+  \Huge{$title$} \\
   \vspace{1em}
-  \Large{Spezifikation einer einheitlichen Schnittstelle zum Abruf von maschinenlesbaren Informationen aus Ratsinformationssystemen.} \\
+  \Large{$description$} \\
 
   \vspace{10em}
 

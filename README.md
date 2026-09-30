@@ -1,172 +1,140 @@
-[![OParl Wortmarke](https://raw.githubusercontent.com/OParl/brand/master/wortmarke/oparl-wortmarke-rgb-m.png)][oparl]
+# kommParl
 
-[![Build Status](https://travis-ci.org/OParl/spec.svg)][travis]
+**Stand: Entwurf.** Es gibt noch keine veröffentlichte Version von kommParl. Inhalte, Bezeichner und
+Adressen können sich ändern.
 
-In diesem Repository wird die Spezifikation zum [OParl][oparl]-Standard gepflegt.
+kommParl ist eine offene Schnittstelle für parlamentarische Informationssysteme. Sie beschreibt, wie
+Sitzungen, Tagesordnungen, Vorlagen, Beschlüsse, Gremien und Personen maschinenlesbar bereitgestellt
+werden, sodass Anwendungen diese Daten ohne Absprache im Einzelfall abrufen und weiterverwenden können.
 
-Der OParl-Standard definiert eine einheitliche Schnittstelle zum Abruf von
-maschinenlesbaren Informationen aus Ratsinformationssystemen.
+Ausgangspunkt sind die kommunalen Vertretungen: Räte, Kreistage, Bezirksvertretungen und ihre
+Ausschüsse. Das Datenmodell ist nicht auf Kommunen beschränkt. Perspektivisch soll kommParl auch für
+Parlamente der Länder, des Bundes und anderer Staaten nutzbar sein.
 
-- Mehr über OParl: [https://oparl.org][oparl]
-- Weitere Informationen für Entwickler: [https://dev.oparl.org][oparl-dev]
+## Verhältnis zu OParl 1.1
 
-Änderungsvorschläge können über Pull Requests eingebracht werden.
-Hilfe im Umgang mit GitHub findest du [hier][github-help].
+kommParl baut auf der Spezifikation [OParl 1.1](https://github.com/OParl/spec) auf und ist als
+**kompatible Obermenge** angelegt:
 
-## Die Spezifikation herunterladen
+- Jede gültige OParl-1.1-Ausgabe bleibt eine gültige kommParl-Ausgabe.
+- Ein Client, der für OParl 1.1 geschrieben wurde, kann einen kommParl-Server unverändert nutzen.
+- Was über OParl 1.1 hinausgeht, ist in **Profilen** beschrieben. Ein Server gibt an, welche Profile
+  er unterstützt. Kein Profil ist Voraussetzung dafür, öffentliche Daten abzurufen.
 
-Die Spezifikation kann in verschiedenen Formaten heruntergeladen werden.
+kommParl ist ein eigenständiges Projekt. Es wird **nicht von der OParl-Initiative herausgegeben** und
+ist keine Version von OParl. Wir nennen OParl, weil kommParl darauf aufbaut und dazu kompatibel
+bleibt. Woher die Inhalte stammen und was wir geändert haben, steht in [HERKUNFT.md](HERKUNFT.md).
 
-### Version 1.1
+## Stand der Arbeit
 
-* [PDF][spec-1-1-pdf]
-* [HTML][spec-1-1-html]
-* [OpenOffice/LibreOffice][spec-1-1-odt]
-* [Microsoft Word][spec-1-1-docx]
-* [EPub][spec-1-1-epub]
-* [Nur Text][spec-1-1-txt]
+| Teil | Stand |
+|---|---|
+| Grundlage: Text, Schemas und Beispiele von OParl 1.1 | übernommen |
+| Verhältnis zu OParl 1.1, Klarstellungen | Entwurf in Arbeit |
+| Profil Änderungsfeed, Profil Snapshot | Entwurf in Arbeit |
+| Weitere Profile (nicht öffentliche Mandatsdaten, Einreichung, Abstimmungen) | Ausblick |
 
-### Version 1.0
+Die Entwürfe entstehen in diesem Repository über Issues und Pull Requests. Solange der Stand
+„Entwurf“ gilt, sollten sich Umsetzungen nicht auf Einzelheiten der Erweiterungen verlassen.
 
-* [PDF][spec-1-0-pdf]
-* [HTML][spec-1-0-html]
-* [OpenOffice/LibreOffice][spec-1-0-odt]
-* [Microsoft Word][spec-1-0-docx]
-* [EPub][spec-1-0-epub]
-* [Nur Text][spec-1-0-txt]
+## Die Spezifikation bauen
 
-### Aktuelle Entwicklungsversion
+Der Text liegt als Markdown in `src/`, das Datenmodell als JSON in `schema/`, die Beispiele in
+`examples/`. `build.py` fügt daraus mit [pandoc](https://pandoc.org/) ein Dokument zusammen.
 
-* [PDF][spec-master-pdf]
-* [HTML][spec-master-html]
-* [OpenOffice/LibreOffice][spec-master-odt]
-* [Microsoft Word][spec-master-docx]
-* [EPub][spec-master-epub]
-* [Nur Text][spec-master-txt]
-
-## Übersetzen
-
-Da OParl international einzigartig ist würden wir die Spezifikation gerne
-auf Englisch oder auch in weitere Sprachen übersetzen. Dazu benötigen wir
-Helfer mit guten Sprachkenntnissen, die uns bei der Übersetzung helfen.
-
-Zum Übersetzen werden, wie auch bei der sonstigen Textbearbeitung keine
-technischen Fachkenntnisse benötigt. Sowohl die OParl-Spezifikation (dieses
-Repository), als auch die [Entwicklerwebseite][oparl-dev] und [liboparl][oparl-liboparl]
-werden über [Transifex][transifex] lokalisiert. Um daran mitzuarbeiten
-wird nur ein Account benötigt, dann kann den verschiedenen Projekten
-über die [Projektliste][transifex-oparl] beigetreten werden.
-
-Vorang bei der Übersetzung hat vor allem die Spezifikation an sich, da alles
-weitere von der mehrsprachigen Verfügbarkeit des Spezifikationstextes abhängt.
-
-Der Übersetzungsfortschritt wird in regelmäßigen Abständen von Transifex wieder
-zurück in das Repository übertragen, dies passiert derzeit von Hand und kann bei Bedarf
-z.B. durch ein Ticket hier auf GitHub angefragt werden.
-
-### Übersetzungsprojekte
-
-- [Spezifikation][transifex-oparl-spec]
-- [Entwicklerwebseite][transifex-oparl-dev]
-- [liboparl][transifex-oparl-liboparl]
-
-## Erstellen der Dokumente
-
-Es gibt zwei Möglichkeiten, die Dokumente zu erstellen: Direkt mit `build.py` oder über eine Docker-Container.
-
-### Mit `build.py`
-
-Für das Erstellen der Spezifikation ist folgende Software erforderlich:
-
-- [Pandoc][pandoc]
-- [Graphviz][graphviz]
-- [Python >= 3.5][python]
-- [Ghostscript][ghostscript]
-- [ImageMagick][imagemagick]
-
-Zur Erstellung der Archive außerdem:
-
-- [GNU Tar][tar]
-- [Zip][zip]
-
-Unter Ubuntu können alle benötigten Pakete mit einem Befehl installiert werden:
+### Schemas und Beispiele prüfen
 
 ```bash
-sudo apt install etoolbox ghostscript lmodern graphviz make pandoc pandoc-citeproc texlive-fonts-recommended \
-texlive-generic-recommended texlive-humanities texlive-lang-german texlive-latex-recommended texlive-luatex \
-texlive-xetex librsvg2-bin python3 python3-yaml
+python3 -m pip install -r requirements.txt
+python3 build.py test
 ```
 
-Das eigentliche Bauen der Dokumente ist dann nur noch ein einziger Befehl:
+Die Prüfung stellt fest, ob die Schemas in sich stimmig sind und ob jedes Beispiel das Schema seines
+Objekttyps erfüllt.
+
+### HTML und PDF erzeugen
+
+Für HTML werden Python 3, PyYAML, pandoc, Graphviz, Ghostscript und ImageMagick benötigt, für PDF
+zusätzlich eine LaTeX-Umgebung mit XeLaTeX. Unter Debian und Ubuntu:
 
 ```bash
-python3 build.py
+sudo apt-get install pandoc graphviz ghostscript imagemagick librsvg2-bin python3-yaml
+python3 build.py html
+
+sudo apt-get install lmodern texlive-xetex texlive-luatex texlive-latex-recommended \
+  texlive-latex-extra texlive-fonts-recommended texlive-plain-generic texlive-humanities \
+  texlive-lang-german texlive-lang-greek
+python3 build.py pdf
 ```
 
-Die fertigen Dokumente finden sich dann sich in `build/`.
+Das Ergebnis liegt in `build/`. Jeder Aufruf leert dieses Verzeichnis zuerst. Weitere Ausgabeformate
+zeigt `python3 build.py --list-actions`; `python3 build.py all` erzeugt alle Formate in einem Lauf.
 
-Ein einzelnes Ausgabeformat kann mit `python3 build.py <format>` erstellt werden, mit `python3 build.py archives` können
-Archive mit allen Ausgabeformaten gepackt werden. Dazu müssen allerdings
-die enstprechenden Archivierungsprogramme vorhanden sein.
+### Mit Docker
 
-### Docker
+Das `Dockerfile` enthält alle Werkzeuge:
 
-Für den geneigten Containerfreund gibt es ein Container, der alle Tools enthält.
-Auch hier ein Ausgabeformat an den Aufruf angehängt werden kann:
-
-```
-docker run -u $UID:$GID --rm -v $(pwd):$(pwd) -w $(pwd) oparl/specbuilder:latest
+```bash
+docker build -t kommparl-build .
+docker run --rm -u "$(id -u):$(id -g)" -v "$PWD":/work -w /work kommparl-build html
 ```
 
-## Aufbau des Repositories
+### Automatische Prüfung
 
-Die Dateien, aus denen die Spezifikation erstellt wird, sind auf mehrere Ordner aufgeteilt:
+Bei jedem Pull Request prüft ein GitHub-Workflow die Schemas und Beispiele und baut die HTML- und
+die PDF-Fassung, und zwar im Container aus dem `Dockerfile`. Die gebauten Dokumente hängen als
+Artefakt am jeweiligen Lauf.
 
- - `src/`:  Enthält den gesamten Fließtext als [Markdown][markdown-help]-Dateien.
- - `schema/`: Enthält das Datenmodell, d.h. den Aufbau der von OParl genutzten json-Objekte, als json-Dateien in einem
- auf [JSON Schema][json-schema] aufbauenden Format.
- - `examples/`: Die im Text eingebundenen Beispiele
- - `scripts/`: Enthält Skripte, die u.a. die json-Dateien in Markdown umwandeln und die Beispiele validieren
+## Aufbau des Repositorys
 
+| Pfad | Inhalt |
+|---|---|
+| `src/` | Text der Spezifikation (Markdown) |
+| `schema/` | Datenmodell: ein Schema je Objekttyp, Beschreibungstexte in `strings.yml` |
+| `examples/` | Beispiele, die im Text erscheinen und gegen die Schemas geprüft werden |
+| `scripts/` | Hilfsskripte für Build und Prüfung |
+| `resources/` | Vorlagen und Gestaltung der Ausgabeformate |
+| `locales/` | aus dem Original übernommene, unvollständige englische Übersetzung von OParl 1.1 |
 
-[oparl]: https://oparl.org/
-[oparl-dev]: https://dev.oparl.org/
-[oparl-liboparl]: https://github.com/OParl/liboparl/
-[transifex]: https://www.transifex.com/
-[transifex-oparl]: https://www.transifex.com/oparl/
-[transifex-oparl-spec]: https://www.transifex.com/oparl/spec-1/
-[transifex-oparl-dev]: https://www.transifex.com/oparl/dev-website/
-[transifex-oparl-liboparl]: https://www.transifex.com/oparl/liboparl/
+Branches:
 
-[ghostscript]: https://www.ghostscript.com/
-[github-help]: https://help.github.com/
-[graphviz]: http://www.graphviz.org/
-[imagemagick]: https://www.imagemagick.org/script/index.php
-[json-schema]: https://json-schema.org/
-[markdown-help]: https://help.github.com/articles/markdown-basics/
-[pandoc]: http://pandoc.org/
-[python]: https://www.python.org/
-[tar]: https://www.gnu.org/software/tar/
-[travis]: https://travis-ci.org/OParl/spec/
-[zip]: http://www.info-zip.org/
+- `main` ist der Arbeitsstand von kommParl. Pull Requests richten sich gegen `main`.
+- `master` ist der unveränderte Stand des Originals, von dem kommParl ausgeht. Dieser Branch wird
+  nicht bearbeitet.
 
-[spec-1-1-pdf]: https://dev.oparl.org/downloads/spezifikation-1.1.pdf
-[spec-1-1-html]: https://dev.oparl.org/downloads/spezifikation-1.1.html
-[spec-1-1-odt]: https://dev.oparl.org/downloads/spezifikation-1.1.odt
-[spec-1-1-docx]: https://dev.oparl.org/downloads/spezifikation-1.1.docx
-[spec-1-1-epub]: https://dev.oparl.org/downloads/spezifikation-1.1.epub
-[spec-1-1-txt]: https://dev.oparl.org/downloads/spezifikation-1.1.txt
+## Mitwirken
 
-[spec-1-0-pdf]: https://dev.oparl.org/downloads/spezifikation-1.0.pdf
-[spec-1-0-html]: https://dev.oparl.org/downloads/spezifikation-1.0.html
-[spec-1-0-odt]: https://dev.oparl.org/downloads/spezifikation-1.0.odt
-[spec-1-0-docx]: https://dev.oparl.org/downloads/spezifikation-1.0.docx
-[spec-1-0-epub]: https://dev.oparl.org/downloads/spezifikation-1.0.epub
-[spec-1-0-txt]: https://dev.oparl.org/downloads/spezifikation-1.0.txt
+Änderungsvorschläge, Fragen und Hinweise sind willkommen, unabhängig davon, mit welcher Software
+Sie arbeiten. Wie Vorschläge eingebracht und entschieden werden, steht in
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
-[spec-master-pdf]: https://dev.oparl.org/downloads/spezifikation-master.pdf
-[spec-master-html]: https://dev.oparl.org/downloads/spezifikation-master.html
-[spec-master-odt]: https://dev.oparl.org/downloads/spezifikation-master.odt
-[spec-master-docx]: https://dev.oparl.org/downloads/spezifikation-master.docx
-[spec-master-epub]: https://dev.oparl.org/downloads/spezifikation-master.epub
-[spec-master-txt]: https://dev.oparl.org/downloads/spezifikation-master.txt
+## Referenz-Umsetzung
+
+Die Entwürfe werden in [mandari](https://github.com/mandariOSS/mandari) umgesetzt und dort erprobt.
+Die Spezifikation ist davon unabhängig: Sie setzt keine bestimmte Software voraus, und eine
+Umsetzung in anderen Systemen ist ausdrücklich erwünscht.
+
+## Lizenz
+
+Die Spezifikation steht unter der Lizenz
+[Creative Commons Namensnennung – Weitergabe unter gleichen Bedingungen 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.de),
+wie das Original. Der Lizenztext steht in [LICENSE](LICENSE), die Angaben zu Quelle, Urhebern und
+Änderungen in [HERKUNFT.md](HERKUNFT.md).
+
+## English summary
+
+kommParl is an open interface specification for parliamentary information systems: meetings,
+agendas, papers, decisions, committees and people as machine-readable data. It starts with
+municipal councils in Germany and is meant to be usable for state, federal and other parliaments
+as well.
+
+kommParl is based on the [OParl 1.1 specification](https://github.com/OParl/spec) and designed as a
+compatible superset: every valid OParl 1.1 output remains valid, and additional capabilities are
+described as optional profiles. kommParl is an independent project; it is not published by the
+OParl initiative and is not a version of OParl.
+
+Status: draft, no release yet. The specification text is written in German. To check schemas and
+examples run `python3 build.py test`; to build the HTML document run `python3 build.py html`
+(requires pandoc, Graphviz, Ghostscript and ImageMagick). Contributions are welcome, see
+[CONTRIBUTING.md](CONTRIBUTING.md). Licence: CC BY-SA 4.0, same as the original; see
+[HERKUNFT.md](HERKUNFT.md) for attribution and changes.

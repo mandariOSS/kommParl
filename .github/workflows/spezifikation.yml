@@ -1,0 +1,63 @@
+name: Spezifikation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spezifikation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pruefen:
+    name: Schemas und Beispiele prüfen
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Abhängigkeiten installieren
+        run: python -m pip install -r requirements.txt
+      - name: Schemas und Beispiele prüfen
+        run: python build.py test
+
+  bauen:
+    name: Spezifikation bauen (HTML und PDF)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Gebaut wird im Container aus dem Dockerfile des Repositorys. So läuft
+      # im Workflow dieselbe Umgebung wie in der Anleitung im README.
+      - name: Build-Umgebung erstellen
+        run: docker build -t kommparl-build .
+      - name: HTML bauen
+        run: |
+          docker run --rm -u "$(id -u):$(id -g)" -v "$PWD":/work -w /work kommparl-build html
+          mkdir -p ausgabe
+          cp build/kommParl-*/kommParl-*.html ausgabe/
+      - name: PDF bauen
+        run: |
+          docker run --rm -u "$(id -u):$(id -g)" -v "$PWD":/work -w /work kommparl-build pdf
+          cp build/kommParl-*/kommParl-*.pdf ausgabe/
+      - name: Ergebnis prüfen
+        run: |
+          test -s ausgabe/kommParl-*.html
+          test -s ausgabe/kommParl-*.pdf
+          grep -q 'id="entity-system"' ausgabe/kommParl-*.html
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: kommParl-spezifikation
+          path: ausgabe/
+          if-no-files-found: error
+          retention-days: 14

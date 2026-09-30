@@ -1,4 +1,6 @@
-# Dockerfile to create a container able to build the OParl Specification
+# Dockerfile für einen Container, der die kommParl-Spezifikation baut.
+# Grundlage ist das Dockerfile aus OParl/spec; für kommParl angepasst
+# (siehe HERKUNFT.md).
 #
 # MIT License
 #
@@ -22,36 +24,34 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-FROM debian:testing-slim
+FROM debian:13-slim
 
-# recommended packages for pandoc + basic pdf export
-RUN apt update -y && apt upgrade -y && apt install --no-install-recommends -y \
+# pandoc, Werkzeuge für die Abbildungen und LaTeX für die PDF-Ausgabe
+RUN apt-get update -y && apt-get install --no-install-recommends -y \
   ghostscript \
   lmodern \
   graphviz \
   pandoc \
-  pandoc-citeproc \
   texlive-fonts-recommended \
-  texlive-generic-recommended \
+  texlive-plain-generic \
   texlive-humanities \
   texlive-lang-german \
+  texlive-lang-greek \
   texlive-latex-recommended \
+  texlive-latex-extra \
   texlive-luatex \
   texlive-xetex \
+  librsvg2-bin \
   python3 \
-  python3-pip \
-  python3-setuptools \
+  python3-yaml \
+  python3-jsonschema \
   imagemagick \
   zip \
   tar \
-  git-core \
+  git \
   bzip2 && \
-  pip3 install pyyaml && \
-  apt remove -y --purge \
-  python3-pip \
-  python3-setuptools && \
   rm -rf /var/lib/apt/lists/* && \
-  apt clean
+  git config --system --add safe.directory '*'
 
 ENTRYPOINT [ "python3", "build.py" ]
 
