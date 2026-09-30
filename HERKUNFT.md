@@ -89,7 +89,7 @@ gegenüber dem übernommenen Stand (Branch `master`). Alle Einzelheiten zeigt
 | `resources/template.tex` | Paket `calc` ergänzt (für Tabellen mit aktuellem pandoc nötig); die Titelseite der PDF-Fassung zeigt Titel und Beschreibung aus `src/0-00-metadata.md` statt eines festen Textes und verwendet die Wortmarke des Originals nicht |
 | `resources/titelbild.png` | entfernt (Wortmarke des Originals; kommParl verwendet sie nicht) |
 | `requirements.txt` | neu: Python-Abhängigkeiten für die Prüfung der Schemas und Beispiele |
-| `.github/workflows/spezifikation.yml` | neu: prüft bei Pull Requests Schemas und Beispiele und baut die HTML- und die PDF-Fassung |
+| `.github/workflows/spezifikation.yml` | neu: prüft bei Pull Requests Schemas und Beispiele und baut die HTML- und die PDF-Fassung im Container aus dem `Dockerfile` |
 | `.travis.yml` | entfernt (durch den GitHub-Workflow ersetzt) |
 | `.tx/config` | entfernt (Anbindung an das Übersetzungsprojekt des Originals) |
 | `building.en.md` | entfernt (beschrieb einen früheren Build mit `make`); die Bauanleitung steht in `README.md` |

@@ -83,7 +83,8 @@ docker run --rm -u "$(id -u):$(id -g)" -v "$PWD":/work -w /work kommparl-build h
 ### Automatische Prüfung
 
 Bei jedem Pull Request prüft ein GitHub-Workflow die Schemas und Beispiele und baut die HTML- und
-die PDF-Fassung. Die gebauten Dokumente hängen als Artefakte am jeweiligen Lauf.
+die PDF-Fassung, und zwar im Container aus dem `Dockerfile`. Die gebauten Dokumente hängen als
+Artefakt am jeweiligen Lauf.
 
 ## Aufbau des Repositorys
 
