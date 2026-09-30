@@ -16,7 +16,7 @@ Das Dokument besteht aus zwei Teilen:
   Governance und ihren Autoren die Rede ist, ist die OParl-Spezifikation gemeint.
   Was kommParl in diesen Kapiteln ergänzt, ist gekennzeichnet: Anmerkungen
   beginnen mit „Hinweis (kommParl)“, zusätzliche Eigenschaften im Schema tragen
-  das Präfix `kommparl:`.
+  das Präfix `kommparl:` und erscheinen dort in einem eigenen Beispiel.
 - Die **Kapitel 5 bis 8** sind neu. Sie beschreiben das
   [Verhältnis zu OParl 1.1](#verhaeltnis-zu-oparl), die
   [Klarstellungen](#klarstellungen), die [Profile](#profile) und einen
