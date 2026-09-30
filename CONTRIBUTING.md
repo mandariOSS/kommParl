@@ -18,8 +18,10 @@ Zivilgesellschaft.
 Ein Pull Request, der die Schnittstelle ändert, enthält in der Regel:
 
 - den Text in `src/`,
-- das Schema der neuen oder geänderten Objekte und Eigenschaften,
-- mindestens ein Beispiel, das die Prüfung besteht,
+- das Schema der neuen oder geänderten Objekte und Eigenschaften (`schema/` für Objekttypen,
+  `profiles/<Profil>/` für Profile),
+- mindestens ein Beispiel, das die Prüfung besteht; Beispiele im Text verweisen mit
+  `beispiel="<Pfad>"` auf ihre Beispieldatei,
 - einen Eintrag in der Änderungsübersicht in [HERKUNFT.md](HERKUNFT.md), wenn Dateien des Originals
   geändert werden.
 
@@ -36,7 +38,8 @@ OParl 1.1 festlegt:
 - Eine Ausgabe, die OParl 1.1 erfüllt, bleibt gültig. Neue Pflichten gibt es nur innerhalb eines
   Profils, das ein Server ausdrücklich ausweist.
 - Ein Client, der für OParl 1.1 geschrieben wurde, muss einen kommParl-Server ohne Änderung nutzen
-  können. Neue Eigenschaften sind deshalb so zu gestalten, dass ein solcher Client sie übergehen kann.
+  können. Neue Eigenschaften an bestehenden Objekttypen tragen deshalb das Präfix `kommparl:`, sodass
+  ein solcher Client sie übergehen kann.
 - Öffentliche Daten bleiben ohne Anmeldung abrufbar.
 - Vorschläge setzen kein bestimmtes Produkt und keinen bestimmten Betreiber voraus.
 

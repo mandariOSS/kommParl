@@ -29,10 +29,10 @@ bleibt. Woher die Inhalte stammen und was wir geändert haben, steht in [HERKUNF
 
 | Teil | Stand |
 |---|---|
-| Grundlage: Text, Schemas und Beispiele von OParl 1.1 | übernommen |
-| Verhältnis zu OParl 1.1, Klarstellungen | Entwurf in Arbeit |
-| Profil Änderungsfeed, Profil Snapshot | Entwurf in Arbeit |
-| Weitere Profile (nicht öffentliche Mandatsdaten, Einreichung, Abstimmungen) | Ausblick |
+| Grundlage: Text, Schemas und Beispiele von OParl 1.1 (Kapitel 1 bis 4) | übernommen |
+| Verhältnis zu OParl 1.1 (Kapitel 5), Klarstellungen (Kapitel 6) | Entwurf |
+| Profil Änderungsfeed, Profil Snapshot (Kapitel 7) | Entwurf |
+| Weitere Profile: nicht öffentliche Mandatsdaten, Einreichung, Abstimmungen (Kapitel 8) | Ausblick |
 
 Die Entwürfe entstehen in diesem Repository über Issues und Pull Requests. Solange der Stand
 „Entwurf“ gilt, sollten sich Umsetzungen nicht auf Einzelheiten der Erweiterungen verlassen.
@@ -40,7 +40,8 @@ Die Entwürfe entstehen in diesem Repository über Issues und Pull Requests. Sol
 ## Die Spezifikation bauen
 
 Der Text liegt als Markdown in `src/`, das Datenmodell als JSON in `schema/`, die Beispiele in
-`examples/`. `build.py` fügt daraus mit [pandoc](https://pandoc.org/) ein Dokument zusammen.
+`examples/`, die Schemas und Beispiele der Profile in `profiles/`. `build.py` fügt daraus mit
+[pandoc](https://pandoc.org/) ein Dokument zusammen.
 
 ### Schemas und Beispiele prüfen
 
@@ -49,8 +50,8 @@ python3 -m pip install -r requirements.txt
 python3 build.py test
 ```
 
-Die Prüfung stellt fest, ob die Schemas in sich stimmig sind und ob jedes Beispiel das Schema seines
-Objekttyps erfüllt.
+Die Prüfung stellt fest, ob die Schemas in sich stimmig sind, ob jedes Beispiel sein Schema erfüllt
+und ob die Beispiele im Text mit den Beispieldateien übereinstimmen.
 
 ### HTML und PDF erzeugen
 
@@ -91,6 +92,7 @@ die PDF-Fassung. Die gebauten Dokumente hängen als Artefakte am jeweiligen Lauf
 | `src/` | Text der Spezifikation (Markdown) |
 | `schema/` | Datenmodell: ein Schema je Objekttyp, Beschreibungstexte in `strings.yml` |
 | `examples/` | Beispiele, die im Text erscheinen und gegen die Schemas geprüft werden |
+| `profiles/` | je Profil die JSON-Schemas und geprüfte Beispiele |
 | `scripts/` | Hilfsskripte für Build und Prüfung |
 | `resources/` | Vorlagen und Gestaltung der Ausgabeformate |
 | `locales/` | aus dem Original übernommene, unvollständige englische Übersetzung von OParl 1.1 |
