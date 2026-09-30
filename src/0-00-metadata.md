@@ -1,8 +1,8 @@
 ---
-title: OParl-Spezifikation 1.1
+title: kommParl – Entwurf
 rights: CC BY-SA 4.0
 language: de-DE
-description: Spezifikation einer einheitlichen Schnittstelle zum Abruf von maschinenlesbaren Informationen aus Ratsinformationssystemen.
+description: Offene Schnittstelle für parlamentarische Informationssysteme. Kompatible Erweiterung auf Grundlage der OParl-Spezifikation 1.1.
 toc-title: Inhaltsverzeichnis
-date: 20.06.2018
+date: 30.09.2026
 ---

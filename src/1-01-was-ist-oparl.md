@@ -1,5 +1,11 @@
 ## Was ist OParl? {#was_ist_oparl}
 
+> **Hinweis (kommParl):** Dieser Abschnitt stammt aus der OParl-Spezifikation
+> und beschreibt deren Herausgeber und deren Standard. Herausgeber des
+> vorliegenden Dokuments ist das Projekt kommParl, nicht die OParl-Initiative;
+> siehe [Über dieses Dokument](#ueber-dieses-dokument) und
+> [Verhältnis zu OParl 1.1](#verhaeltnis-zu-oparl).
+
 OParl ist die Gruppierung, die Initiator und Herausgeber der
 vorliegenden Spezifikation ist. An OParl wirken Verbände,
 zivilgesellschaftliche Organisationen und Initiativen und

@@ -1,5 +1,10 @@
 ## Autoren {#oparl-autoren}
 
+> **Hinweis (kommParl):** Die hier Genannten sind die Autorinnen und Autoren
+> der OParl-Spezifikation. Ihre Nennung bedeutet nicht, dass sie kommParl
+> unterstützen oder herausgeben. Wer zu kommParl beigetragen hat, ergibt sich
+> aus der Versionsgeschichte des Repositorys von kommParl.
+
 ### Kernteam
 
 Stefan Graupner, Ernesto Ruge, Konstantin Schütze
