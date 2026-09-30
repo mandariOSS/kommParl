@@ -161,7 +161,7 @@ def json_examples_to_md(examples_folder, name):
         md += "~~~~ {.json}\n"
         md += json.dumps(example, ensure_ascii=False, indent=4) + "\n"
         md += "~~~~\n\n"
-        md += "\pagebreak\n"
+        md += "\\pagebreak\n"
         md += "\n"
 
     return md

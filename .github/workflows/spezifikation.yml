@@ -1,0 +1,84 @@
+name: Spezifikation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spezifikation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pruefen:
+    name: Schemas und Beispiele prüfen
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Abhängigkeiten installieren
+        run: python -m pip install -r requirements.txt
+      - name: Schemas und Beispiele prüfen
+        run: python build.py test
+
+  html:
+    name: Spezifikation bauen (HTML)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Werkzeuge installieren
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            pandoc graphviz ghostscript imagemagick librsvg2-bin python3-yaml
+      - name: HTML bauen
+        run: python3 build.py html
+      - name: Ergebnis prüfen
+        run: |
+          datei="$(ls build/kommParl-*/kommParl-*.html)"
+          test -s "$datei"
+          grep -q 'id="entity-system"' "$datei"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: kommParl-html
+          path: build/kommParl-*/kommParl-*.html
+          if-no-files-found: error
+          retention-days: 14
+
+  pdf:
+    name: Spezifikation bauen (PDF)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Werkzeuge installieren
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            pandoc graphviz ghostscript imagemagick librsvg2-bin python3-yaml \
+            lmodern texlive-xetex texlive-luatex texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-plain-generic texlive-humanities \
+            texlive-lang-german texlive-lang-greek
+      - name: PDF bauen
+        run: python3 build.py pdf
+      - name: Ergebnis prüfen
+        run: test -s "$(ls build/kommParl-*/kommParl-*.pdf)"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: kommParl-pdf
+          path: build/kommParl-*/kommParl-*.pdf
+          if-no-files-found: error
+          retention-days: 14
