@@ -31,6 +31,14 @@
             },
             "type": "array"
         },
+        "kommparl:conformsTo": {
+            "description": "{{ System.properties.kommparl:conformsTo.description }}",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "format": "url"
+            }
+        },
         "license": {
             "description": "{{ System.properties.license.description }}",
             "type": "string",

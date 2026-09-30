@@ -1,0 +1,16 @@
+{
+    "id": "https://oparl.example.org/",
+    "type": "https://schema.oparl.org/1.1/System",
+    "oparlVersion": "https://schema.oparl.org/1.1/",
+    "kommparl:conformsTo": [
+        "https://schema.kommparl.example/draft/",
+        "https://schema.kommparl.example/draft/profile/changes",
+        "https://schema.kommparl.example/draft/profile/snapshot"
+    ],
+    "body": "https://oparl.example.org/bodies",
+    "name": "Beispiel-System",
+    "contactEmail": "info@example.org",
+    "license": "https://www.govdata.de/dl-de/by-2-0",
+    "created": "2011-11-11T11:11:00+01:00",
+    "modified": "2026-09-30T09:00:00+02:00"
+}

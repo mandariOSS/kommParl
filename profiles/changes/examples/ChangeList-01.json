@@ -1,0 +1,32 @@
+{
+    "data": [
+        {
+            "cursor": "MDAwMDAxMDA0NQ",
+            "operation": "upsert",
+            "type": "https://schema.oparl.org/1.1/Paper",
+            "id": "https://oparl.example.org/paper/749",
+            "modified": "2026-09-28T08:14:03+02:00"
+        },
+        {
+            "cursor": "MDAwMDAxMDA0Ng",
+            "operation": "delete",
+            "type": "https://schema.oparl.org/1.1/File",
+            "id": "https://oparl.example.org/files/57739",
+            "modified": "2026-09-28T08:15:10+02:00",
+            "reason": "withdrawn"
+        },
+        {
+            "cursor": "MDAwMDAxMDA0Nw",
+            "operation": "redact",
+            "type": "https://schema.oparl.org/1.1/Person",
+            "id": "https://oparl.example.org/person/29",
+            "modified": "2026-09-28T09:02:41+02:00",
+            "reason": "privacy"
+        }
+    ],
+    "cursor": "MDAwMDAxMDA0Nw",
+    "links": {
+        "self": "https://oparl.example.org/body/0/changes?after=MDAwMDAxMDA0NA&limit=3",
+        "next": "https://oparl.example.org/body/0/changes?after=MDAwMDAxMDA0Nw&limit=3"
+    }
+}

@@ -139,6 +139,8 @@ de:
   Body.properties.classification.description: Art der Körperschaft.
   Body.properties.location.description: Ort, an dem die Körperschaft beheimatet ist.
   Body.properties.mainOrganization.description: Das zentrale Gremium einer Körperschaft. Bei einer Stadt wäre das z.B. die Vollversammlung des Stadtrats, beim Bundestag das Plenum.
+  "Body.properties.kommparl:changes.description": "Ergänzung von kommParl: URL des Änderungsfeeds dieser Körperschaft. Siehe [Profil Änderungsfeed](#profil-aenderungsfeed)."
+  "Body.properties.kommparl:snapshot.description": "Ergänzung von kommParl: URL des Snapshots dieser Körperschaft. Siehe [Profil Snapshot](#profil-snapshot)."
   Consultation.description: |
     Der Objekttyp `oparl:Consultation` dient dazu, die Beratung einer Drucksache ([`oparl:Paper`](#oparl_paper)) in einer Sitzung abzubilden. Dabei ist es nicht entscheidend, ob diese Beratung in der Vergangenheit stattgefunden hat oder diese für die Zukunft geplant ist.
     Die Gesamtheit aller Objekte des Typs `oparl:Consultation` zu einer bestimmten Drucksache bildet das ab, was in der Praxis als "Beratungsfolge" der Drucksache bezeichnet wird.
@@ -222,6 +224,7 @@ de:
     Möchte ein Server mehrere zueinander inkompatible OParl-Versionen unterstützen, dann **muss** der Server für jede Version eine eigenen OParl-Schnittstelle mit einem eigenen `System`-Objekt ausgeben.
   System.properties.oparlVersion.description: "Die URL der OParl-Spezifikation, die von diesem Server unterstützt wird. Aktuell kommt hier nur ein Wert in Frage. Mit zukünftigen OParl-Versionen kommen weitere mögliche URLs hinzu. Wert: `https://schema.oparl.org/1.1/`"
   System.properties.otherOparlVersions.description: Dient der Angabe von System-Objekten mit anderen OParl-Versionen.
+  "System.properties.kommparl:conformsTo.description": "Ergänzung von kommParl: Kennungen der kommParl-Fassung und der Profile, die dieses System vollständig unterstützt. Siehe [Profile und ihre Kennzeichnung](#kommparl-kennzeichnung)."
   System.properties.license.description: Lizenz, unter der durch diese API abrufbaren Daten stehen, sofern nicht am einzelnen Objekt anders angegeben. Siehe [`license`](#eigenschaft_license).
   System.properties.body.description: Link zur [Objektliste](#objektlisten) mit allen Körperschaften, die auf dem System existieren.
   System.properties.name.description: Nutzerfreundlicher Name für das System, mit dessen Hilfe Nutzerinnen und Nutzer das System erkennen und von anderen unterscheiden können.
