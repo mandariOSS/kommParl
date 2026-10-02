@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://schema.kommparl.example/draft/profile/snapshot/SnapshotHeader.json",
+    "$id": "https://schema.kommparl.de/0.1/profile/snapshot/SnapshotHeader.json",
     "title": "SnapshotHeader",
     "description": "Kopfzeile eines Snapshots (Profil Snapshot, Entwurf).",
     "type": "object",
@@ -12,7 +12,7 @@
     ],
     "properties": {
         "type": {
-            "const": "https://schema.kommparl.example/draft/SnapshotHeader"
+            "const": "https://schema.kommparl.de/0.1/SnapshotHeader"
         },
         "body": {
             "description": "Die id der Körperschaft.",

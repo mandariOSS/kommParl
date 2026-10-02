@@ -94,12 +94,13 @@ gegenüber dem übernommenen Stand (Branch `master`). Alle Einzelheiten zeigt
 | `.tx/config` | entfernt (Anbindung an das Übersetzungsprojekt des Originals) |
 | `building.en.md` | entfernt (beschrieb einen früheren Build mit `make`); die Bauanleitung steht in `README.md` |
 
-**30.09.2026 – Entwurf der Erweiterungen.** Der Text der Kapitel 1 bis 4 ist unverändert bis auf drei
-gekennzeichnete Hinweise. Geändert wurde:
+**30.09. und 02.10.2026 – Entwurf der Erweiterungen (Entwurfsstand 0.1).** Der Text der Kapitel 1
+bis 4 ist unverändert bis auf drei gekennzeichnete Hinweise. Geändert wurde:
 
 | Datei | Änderung |
 |---|---|
-| `src/0-00-metadata.md` | Titel, Beschreibung und Datum: Das Dokument heißt „kommParl – Entwurf“ |
+| `src/0-00-metadata.md` | Titel, Beschreibung und Datum: Das Dokument heißt „kommParl 0.1 – Entwurf“; neue Angabe `kommparl-version` mit der Version des Dokuments |
+| `build.py` | Die Version des Stands kommt aus `kommparl-version`; ein Stand mit dem Tag `kommparl-<version>` erscheint mit dieser Nummer, jeder andere zusätzlich als Entwurf mit dem Commit |
 | `src/0-10-ueber-dieses-dokument.md` | neu: Vorbemerkung mit Stand, Aufbau des Dokuments, Herkunft und Lizenz |
 | `src/1-01-was-ist-oparl.md`, `src/1-07-oparl-governance.md`, `src/1-08-oparl-autoren.md` | je ein „Hinweis (kommParl)“ am Anfang des Abschnitts ergänzt: Die Abschnitte beschreiben Herausgeber, Governance und Autoren von OParl, nicht von kommParl. Der übrige Text ist unverändert |
 | `src/5-00-verhaeltnis-zu-oparl.md` | neu: Kapitel „Verhältnis zu OParl 1.1“ |
@@ -111,5 +112,5 @@ gekennzeichnete Hinweise. Geändert wurde:
 | `schema/strings.yml` | Beschreibungen der drei ergänzten Eigenschaften |
 | `examples/System-02.json`, `examples/Body-02.json` | neu: Beispiele mit den ergänzten Eigenschaften. Die Beispiele des Originals sind unverändert |
 | `profiles/` | neu: JSON-Schemas und Beispiele der Profile Änderungsfeed und Snapshot |
-| `scripts/validate.py` | prüft zusätzlich die Schemas und Beispiele der Profile und vergleicht Beispiele im Text mit den Beispieldateien |
+| `scripts/validate.py` | prüft zusätzlich die Schemas und Beispiele der Profile, vergleicht Beispiele im Text mit den Beispieldateien und prüft, dass alle Kennungen im Namensraum `https://schema.kommparl.de/<version>/` liegen und zur Version des Dokuments passen |
 | `scripts/json_schema2markdown.py` | mehrere Beispiele je Objekttyp erscheinen in fester Reihenfolge |

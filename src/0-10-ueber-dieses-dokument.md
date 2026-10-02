@@ -1,8 +1,10 @@
 # Über dieses Dokument {#ueber-dieses-dokument .unnumbered}
 
-Dieses Dokument ist der **Entwurf** von kommParl, einer offenen Schnittstelle für
-parlamentarische Informationssysteme. Es gibt noch keine veröffentlichte Version
-von kommParl. Inhalte, Bezeichner und Adressen können sich ändern.
+Dieses Dokument ist der **Entwurfsstand 0.1** von kommParl, einer offenen
+Schnittstelle für parlamentarische Informationssysteme. Es gibt noch keine
+veröffentlichte Version von kommParl; die erste Version, die kein Entwurf ist,
+wird kommParl 1.0 heißen. Bis dahin können sich Inhalte, Bezeichner und Adressen
+ändern (siehe [Versionierung](#kommparl-versionierung)).
 
 kommParl baut auf der OParl-Spezifikation 1.1 auf und ist als kompatible
 Obermenge angelegt: Jede gültige OParl-1.1-Ausgabe bleibt gültig, Erweiterungen

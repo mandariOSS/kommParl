@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://schema.kommparl.example/draft/profile/changes/CursorExpired.json",
+    "$id": "https://schema.kommparl.de/0.1/profile/changes/CursorExpired.json",
     "title": "CursorExpired",
     "description": "Fehlerobjekt der Antwort mit dem Statuscode 410 auf einen abgelaufenen Cursor (Profil Änderungsfeed, Entwurf). Es entspricht dem Fehlerobjekt aus dem Kapitel Ausnahmebehandlung.",
     "type": "object",

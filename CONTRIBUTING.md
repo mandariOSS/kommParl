@@ -22,6 +22,9 @@ Ein Pull Request, der die Schnittstelle ändert, enthält in der Regel:
   `profiles/<Profil>/` für Profile),
 - mindestens ein Beispiel, das die Prüfung besteht; Beispiele im Text verweisen mit
   `beispiel="<Pfad>"` auf ihre Beispieldatei,
+- für neue Kennungen (Profile, Typ-URLs, `$id` der Schemas) Adressen im Namensraum
+  `https://schema.kommparl.de/<version>/`; `<version>` ist die Version aus `kommparl-version` in
+  `src/0-00-metadata.md`,
 - einen Eintrag in der Änderungsübersicht in [HERKUNFT.md](HERKUNFT.md), wenn Dateien des Originals
   geändert werden.
 

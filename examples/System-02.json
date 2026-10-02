@@ -3,9 +3,9 @@
     "type": "https://schema.oparl.org/1.1/System",
     "oparlVersion": "https://schema.oparl.org/1.1/",
     "kommparl:conformsTo": [
-        "https://schema.kommparl.example/draft/",
-        "https://schema.kommparl.example/draft/profile/changes",
-        "https://schema.kommparl.example/draft/profile/snapshot"
+        "https://schema.kommparl.de/0.1/",
+        "https://schema.kommparl.de/0.1/profile/changes",
+        "https://schema.kommparl.de/0.1/profile/snapshot"
     ],
     "body": "https://oparl.example.org/bodies",
     "name": "Beispiel-System",

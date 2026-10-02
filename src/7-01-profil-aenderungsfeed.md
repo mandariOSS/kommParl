@@ -1,6 +1,6 @@
 ## Profil Änderungsfeed {#profil-aenderungsfeed}
 
-Kennung: `https://schema.kommparl.example/draft/profile/changes`
+Kennung: `https://schema.kommparl.de/0.1/profile/changes`
 
 ### Zweck {#aenderungsfeed-zweck}
 

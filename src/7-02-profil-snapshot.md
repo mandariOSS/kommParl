@@ -1,6 +1,6 @@
 ## Profil Snapshot {#profil-snapshot}
 
-Kennung: `https://schema.kommparl.example/draft/profile/snapshot`
+Kennung: `https://schema.kommparl.de/0.1/profile/snapshot`
 
 ### Zweck {#snapshot-zweck}
 
@@ -58,7 +58,7 @@ Eigenschaften der Kopfzeile:
 
 Name        | Typ       | Beschreibung
 ------------|-----------|------------------------------------------------------
-`type`      | url       | **ZWINGEND** `https://schema.kommparl.example/draft/SnapshotHeader`
+`type`      | url       | **ZWINGEND** `https://schema.kommparl.de/0.1/SnapshotHeader`
 `body`      | url       | **ZWINGEND** Die `id` der Körperschaft.
 `cursor`    | string    | **ZWINGEND** Position im Änderungsfeed der Körperschaft, an der der Client nach dem Snapshot fortsetzt.
 `generated` | date-time | **ZWINGEND** Zeitpunkt, zu dem der Server den Snapshot erzeugt hat.
@@ -67,7 +67,7 @@ Eigenschaften der Schlusszeile:
 
 Name     | Typ     | Beschreibung
 ---------|---------|-----------------------------------------------------------
-`type`   | url     | **ZWINGEND** `https://schema.kommparl.example/draft/SnapshotEnd`
+`type`   | url     | **ZWINGEND** `https://schema.kommparl.de/0.1/SnapshotEnd`
 `count`  | integer | **ZWINGEND** Anzahl der Objektzeilen.
 
 Für die Objektzeilen gilt:
@@ -86,11 +86,11 @@ Für die Objektzeilen gilt:
 **Beispiel** (gekürzt; jede Zeile ist im Snapshot ungekürzt und ohne Umbruch)
 
 ~~~~~
-{"type": "https://schema.kommparl.example/draft/SnapshotHeader", "body": "https://oparl.example.org/body/0", "cursor": "MDAwMDAxMDA1Mg", "generated": "2026-09-30T03:00:00+02:00"}
+{"type": "https://schema.kommparl.de/0.1/SnapshotHeader", "body": "https://oparl.example.org/body/0", "cursor": "MDAwMDAxMDA1Mg", "generated": "2026-09-30T03:00:00+02:00"}
 {"id": "https://oparl.example.org/body/0", "type": "https://schema.oparl.org/1.1/Body", "name": "Beispielstadt", ...}
 {"id": "https://oparl.example.org/organization/34", "type": "https://schema.oparl.org/1.1/Organization", "name": "Finanzausschuss", ...}
 {"id": "https://oparl.example.org/paper/749", "type": "https://schema.oparl.org/1.1/Paper", "name": "Antwort auf Anfrage 1200/2014", ...}
-{"type": "https://schema.kommparl.example/draft/SnapshotEnd", "count": 3}
+{"type": "https://schema.kommparl.de/0.1/SnapshotEnd", "count": 3}
 ~~~~~
 
 Ein vollständiges, geprüftes Beispiel liegt im Repository unter

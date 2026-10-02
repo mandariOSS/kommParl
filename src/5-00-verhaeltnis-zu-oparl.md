@@ -67,11 +67,15 @@ Eigenschaft `kommparl:conformsTo` aus. Der Wert ist eine Liste von URLs:
 
 Gegenstand                         | Kennung
 -----------------------------------|----------------------------------------------------------
-kommParl, Fassung dieses Entwurfs  | `https://schema.kommparl.example/draft/`
-Profil Änderungsfeed               | `https://schema.kommparl.example/draft/profile/changes`
-Profil Snapshot                    | `https://schema.kommparl.example/draft/profile/snapshot`
+kommParl, Entwurfsstand 0.1        | `https://schema.kommparl.de/0.1/`
+Profil Änderungsfeed               | `https://schema.kommparl.de/0.1/profile/changes`
+Profil Snapshot                    | `https://schema.kommparl.de/0.1/profile/snapshot`
 
-Dafür gilt:
+Die Kennungen gelten für den Entwurfsstand 0.1. Jeder weitere Entwurfsstand und
+kommParl 1.0 vergeben eigene Kennungen (siehe
+[Versionierung](#kommparl-versionierung)).
+
+Für `kommparl:conformsTo` gilt:
 
 - Ein Server **darf** in `kommparl:conformsTo` nur Kennungen nennen, deren
   Anforderungen er vollständig erfüllt.
@@ -89,9 +93,9 @@ Dafür gilt:
     "type": "https://schema.oparl.org/1.1/System",
     "oparlVersion": "https://schema.oparl.org/1.1/",
     "kommparl:conformsTo": [
-        "https://schema.kommparl.example/draft/",
-        "https://schema.kommparl.example/draft/profile/changes",
-        "https://schema.kommparl.example/draft/profile/snapshot"
+        "https://schema.kommparl.de/0.1/",
+        "https://schema.kommparl.de/0.1/profile/changes",
+        "https://schema.kommparl.de/0.1/profile/snapshot"
     ],
     "body": "https://oparl.example.org/bodies",
     "name": "Beispiel-System",
@@ -104,38 +108,89 @@ Dafür gilt:
 
 ## Präfix und Namensraum {#kommparl-namensraum}
 
+### Präfix {#kommparl-praefix}
+
 Das Präfix `kommparl:` kennzeichnet Eigenschaften, die in diesem Dokument
 festgelegt sind. Es ist kein Herstellerpräfix: Eigenschaften mit diesem Präfix
 haben in jedem System dieselbe Bedeutung. Herstellerspezifische Eigenschaften
 verwenden weiterhin ein eigenes Präfix des Herstellers.
 
-Kennungen und Typ-URLs, die kommParl vergibt, liegen in einem eigenen Namensraum.
-kommParl vergibt keine Kennungen unterhalb von `https://schema.oparl.org/`.
+Das Präfix enthält keine Version. Eine Eigenschaft wie `kommparl:conformsTo`
+heißt in jeder Fassung von kommParl gleich.
 
-Der Namensraum dieses Entwurfs ist ein **Platzhalter**:
+Legt kommParl eine Eigenschaft fest, die ein Hersteller bisher unter seinem
+eigenen Präfix ausgibt, **darf** der Server beide Eigenschaften für eine
+Übergangszeit nebeneinander ausgeben. Clients übergehen die Eigenschaft, die sie
+nicht kennen (Regel 5 der [Kompatibilitätsregeln](#kompatibilitaetsregeln)).
 
-    https://schema.kommparl.example/draft/
+### Namensraum {#kommparl-namensraum-aufbau}
 
-Die Domain `kommparl.example` ist für Beispiele reserviert und nicht erreichbar.
-Der endgültige Namensraum wird vor der ersten Veröffentlichung festgelegt. Bis
-dahin können sich alle Kennungen dieses Entwurfs ändern; der Bestandteil `draft`
-weist darauf hin.
+Kennungen und Typ-URLs, die kommParl vergibt, liegen im Namensraum
+
+    https://schema.kommparl.de/<version>/
+
+Dabei ist `<version>` die Version von kommParl, in der die Kennung festgelegt ist
+(siehe [Versionierung](#kommparl-versionierung)). kommParl vergibt keine
+Kennungen unterhalb von `https://schema.oparl.org/`.
+
+Die Kennungen sind so aufgebaut:
+
+- Fassung von kommParl: `https://schema.kommparl.de/<version>/`
+- Profil: `https://schema.kommparl.de/<version>/profile/<Profil>`
+- Typ-URL eines neuen Objekttyps: `https://schema.kommparl.de/<version>/<Typ>`
+- JSON-Schema eines Profils, angegeben in dessen `$id`:
+  `https://schema.kommparl.de/<version>/profile/<Profil>/<Typ>.json`
+
+Im Entwurfsstand 0.1 lautet zum Beispiel die Typ-URL der Kopfzeile eines
+Snapshots `https://schema.kommparl.de/0.1/SnapshotHeader` und die `$id` ihres
+Schemas `https://schema.kommparl.de/0.1/profile/snapshot/SnapshotHeader.json`.
+
+Dafür gilt:
+
+- Kennungen werden als Zeichenketten verglichen. Gültig ist nur die
+  Schreibweise in diesem Dokument, mit `https` und dem Rechnernamen
+  `schema.kommparl.de`.
+- Die Adressen sind abrufbar: Unter der Kennung einer Fassung oder eines Profils
+  steht dessen Beschreibung, unter der `$id` eines Schemas das Schema. Ein
+  Client muss eine Kennung nicht abrufen, um sie zu erkennen.
+- Abrufbar sind die Adressen einer Version, sobald sie veröffentlicht ist (siehe
+  [Versionierung](#kommparl-versionierung)). Der Entwurfsstand 0.1 ist nicht
+  veröffentlicht; seine Schemas liegen nur im Repository unter `profiles/`.
 
 ## Versionierung {#kommparl-versionierung}
 
 kommParl hat eine eigene Versionszählung. Sie ist von der Zählung der
-OParl-Versionen unabhängig; eine kommParl-Version ist keine OParl-Version.
+OParl-Versionen unabhängig; eine kommParl-Version ist keine OParl-Version. Die
+Angabe `oparlVersion` bleibt davon unberührt (Regel 2 der
+[Kompatibilitätsregeln](#kompatibilitaetsregeln)).
 
-- Eine Version besteht aus Hauptversion und Nebenversion.
-- Innerhalb einer Hauptversion bleiben die
+- Eine Version besteht aus Hauptversion und Nebenversion, zum Beispiel `1.0`.
+- Versionen mit der Hauptversion 0, also 0.1, 0.2 und so weiter, sind
+  **Entwürfe**. Ein Entwurfsstand kann alles ändern, was ein früherer festgelegt
+  hat, und vergibt alle Kennungen unter seiner eigenen Nummer neu. Die Zusagen
+  der folgenden Punkte gelten für Entwürfe nicht. Eine Umsetzung, die sich nach
+  einem Entwurf richtet, nennt in `kommparl:conformsTo` die Kennungen dieses
+  Entwurfsstands.
+- Die erste Version, die kein Entwurf ist, heißt **kommParl 1.0**.
+- Ab kommParl 1.0 bleiben innerhalb einer Hauptversion die
   [Kompatibilitätsregeln](#kompatibilitaetsregeln) gültig. Eine neue
   Nebenversion fügt hinzu, ändert aber nichts, worauf sich Clients einer
   früheren Nebenversion verlassen.
-- Profile werden mit der Spezifikation versioniert. Die Kennung eines Profils
-  enthält die Version, in der es festgelegt ist.
+- Ab kommParl 1.0 sind Kennungen dauerhaft. Profile werden mit der
+  Spezifikation versioniert; die Kennung eines Profils enthält die Version, in
+  der es festgelegt ist.
 - Eine Fassung, die diese Regeln nicht einhalten könnte, erhielte eine neue
   Hauptversion und würde wie in [Zukunftssicherheit](#zukunftssicherheit)
   beschrieben unter einem eigenen Endpunkt parallel angeboten.
 
-Solange kommParl ein Entwurf ist, gibt es keine Versionsnummer. Die Nummer der
-ersten Veröffentlichung ist noch nicht festgelegt.
+Eine Version heißt „kommParl“ mit ihrer Nummer, zum Beispiel „kommParl 1.0“,
+ohne weiteren Namenszusatz; bei Entwürfen kommt das Wort „Entwurf“ hinzu. Die
+Kompatibilität zu OParl 1.1 beschreibt dieses Kapitel, sie ist nicht Teil des
+Namens.
+
+Eine Version ist veröffentlicht, wenn ihr Stand im Repository ein Tag der Form
+`kommparl-<version>` trägt, zum Beispiel `kommparl-1.0`. Die Tags `v1.0` bis
+`v1.1.1` im Repository stammen aus dem Original und bezeichnen Versionen von
+OParl.
+
+Dieses Dokument ist der **Entwurfsstand 0.1**. Er ist nicht veröffentlicht.
