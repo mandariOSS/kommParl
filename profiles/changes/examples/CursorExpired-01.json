@@ -1,0 +1,6 @@
+{
+    "type": "https://schema.oparl.org/1.1/Error",
+    "message": "Der Cursor ist abgelaufen. Bitte den Bestand neu abrufen.",
+    "debug": "cursor older than retention (30 days)",
+    "kommparl:snapshot": "https://oparl.example.org/body/0/snapshot"
+}
