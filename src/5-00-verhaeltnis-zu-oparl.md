@@ -135,15 +135,23 @@ Kennungen unterhalb von `https://schema.oparl.org/`.
 
 Die Kennungen sind so aufgebaut:
 
-- Fassung von kommParl: `https://schema.kommparl.de/<version>/`
-- Profil: `https://schema.kommparl.de/<version>/profile/<Profil>`
-- Typ-URL eines neuen Objekttyps: `https://schema.kommparl.de/<version>/<Typ>`
-- JSON-Schema eines Profils, angegeben in dessen `$id`:
-  `https://schema.kommparl.de/<version>/profile/<Profil>/<Typ>.json`
+Fassung von kommParl
+:   `https://schema.kommparl.de/<version>/`
 
-Im Entwurfsstand 0.1 lautet zum Beispiel die Typ-URL der Kopfzeile eines
-Snapshots `https://schema.kommparl.de/0.1/SnapshotHeader` und die `$id` ihres
-Schemas `https://schema.kommparl.de/0.1/profile/snapshot/SnapshotHeader.json`.
+Profil
+:   `https://schema.kommparl.de/<version>/profile/<Profil>`
+
+Typ-URL eines neuen Objekttyps
+:   `https://schema.kommparl.de/<version>/<Typ>`
+
+JSON-Schema eines Profils, angegeben in dessen `$id`
+:   `https://schema.kommparl.de/<version>/profile/<Profil>/<Typ>.json`
+
+Im Entwurfsstand 0.1 lauten zum Beispiel die Typ-URL der Kopfzeile eines
+Snapshots und die `$id` ihres Schemas:
+
+    https://schema.kommparl.de/0.1/SnapshotHeader
+    https://schema.kommparl.de/0.1/profile/snapshot/SnapshotHeader.json
 
 Dafür gilt:
 
