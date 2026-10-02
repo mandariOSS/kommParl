@@ -133,19 +133,14 @@ Dabei ist `<version>` die Version von kommParl, in der die Kennung festgelegt is
 (siehe [Versionierung](#kommparl-versionierung)). kommParl vergibt keine
 Kennungen unterhalb von `https://schema.oparl.org/`.
 
-Die Kennungen sind so aufgebaut:
+Darin sind die Kennungen so aufgebaut, der Reihe nach für eine Fassung von
+kommParl, ein Profil, die Typ-URL eines neuen Objekttyps und das JSON-Schema
+eines Profils (angegeben in dessen `$id`):
 
-Fassung von kommParl
-:   `https://schema.kommparl.de/<version>/`
-
-Profil
-:   `https://schema.kommparl.de/<version>/profile/<Profil>`
-
-Typ-URL eines neuen Objekttyps
-:   `https://schema.kommparl.de/<version>/<Typ>`
-
-JSON-Schema eines Profils, angegeben in dessen `$id`
-:   `https://schema.kommparl.de/<version>/profile/<Profil>/<Typ>.json`
+    https://schema.kommparl.de/<version>/
+    https://schema.kommparl.de/<version>/profile/<Profil>
+    https://schema.kommparl.de/<version>/<Typ>
+    https://schema.kommparl.de/<version>/profile/<Profil>/<Typ>.json
 
 Im Entwurfsstand 0.1 lauten zum Beispiel die Typ-URL der Kopfzeile eines
 Snapshots und die `$id` ihres Schemas:
