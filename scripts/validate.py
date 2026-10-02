@@ -23,8 +23,9 @@ JSON Schema aufbauendes Format mit eigenen Schlüsselwörtern (`schema`,
 **Profile (`profiles/<Profil>/`).** Die Schemas der Profile sind reines JSON
 Schema (Draft 2020-12). Geprüft wird:
 
-6. Jede Schemadatei ist ein gültiges JSON Schema, und ihr Dateiname entspricht
-   dem Titel.
+6. Jede Schemadatei ist ein gültiges JSON Schema, ihr Dateiname entspricht
+   dem Titel, und ihre `$id` hat die Form
+   `https://schema.kommparl.de/<version>/profile/<Profil>/<Datei>`.
 7. Jedes Beispiel `profiles/<Profil>/examples/<Schema>-<Nr>.json` erfüllt das
    gleichnamige Schema. Zu jedem Schema gibt es mindestens ein Beispiel.
 8. Jedes Beispiel `Snapshot-<Nr>.ndjson` ist ein vollständiger Snapshot:
@@ -35,6 +36,17 @@ Schema (Draft 2020-12). Geprüft wird:
 
 9. Jedes Beispiel im Text, das mit `beispiel="<Pfad>"` auf eine Beispieldatei
    verweist, stimmt mit dieser Datei überein.
+
+**Namensraum und Version.**
+
+10. `src/0-00-metadata.md` nennt die Version des Dokuments in
+    `kommparl-version`, der Titel enthält sie.
+11. Jede Kennung von kommParl in Text, Schemas und Beispielen liegt im
+    Namensraum `https://schema.kommparl.de/<version>/`. In einem Entwurf
+    (Version 0.x) ist `<version>` die Version des Dokuments; ab Version 1.0
+    darf eine Kennung auch aus einer früheren Version derselben oder einer
+    früheren Hauptversion ab 1.0 stammen. Schreibweisen mit anderer Domain
+    oder ohne `https` fallen auf.
 
 Aufruf aus dem Wurzelverzeichnis des Repositorys:
 
@@ -57,6 +69,7 @@ SCHEMA_DIR = ROOT / "schema"
 EXAMPLES_DIR = ROOT / "examples"
 PROFILES_DIR = ROOT / "profiles"
 SOURCE_DIR = ROOT / "src"
+METADATA_FILE = SOURCE_DIR / "0-00-metadata.md"
 STRINGS_FILE = SCHEMA_DIR / "strings.yml"
 LANGUAGE = "de"
 
@@ -69,6 +82,12 @@ TEXT_EXAMPLE = re.compile(
 )
 
 # Formate gemäß Kapitel „JSON-Ausgabe“ der Spezifikation
+# Namensraum der Kennungen von kommParl (Kapitel „Verhältnis zu OParl 1.1“)
+NAMESPACE = "https://schema.kommparl.de/"
+# Alles, was wie eine Kennung von kommParl aussieht, auch mit anderer Domain
+NAMESPACE_URL = re.compile(r"https?://schema\.kommparl\.[A-Za-z]+/[^\s`\"'<>)\]]*")
+VERSION_NUMBER = re.compile(r"^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$")
+
 FORMAT_PATTERNS = {
     "url": r"^https?://[^\s]+$",
     "date": r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
@@ -278,6 +297,10 @@ def load_profile_schemas(profile_dir, report):
         for key in ("$schema", "$id", "description"):
             if key not in schema:
                 report.error(relative(path), "Angabe '{}' fehlt".format(key))
+        schema_id = str(schema.get("$id", ""))
+        expected = "/profile/{}/{}".format(profile_dir.name, path.name)
+        if not (schema_id.startswith(NAMESPACE) and schema_id.endswith(expected)):
+            report.error(relative(path), "$id '{}' hat nicht die Form {}<version>{}".format(schema_id, NAMESPACE, expected))
         schemas[path.stem] = schema
     return schemas
 
@@ -405,6 +428,63 @@ def validate_text_examples(report):
     return count
 
 
+# --- Namensraum und Version -------------------------------------------------
+
+
+def read_version(report):
+    """Liest die Version des Dokuments (`kommparl-version`) aus den Metadaten."""
+    where = relative(METADATA_FILE)
+    front_matter = METADATA_FILE.read_text(encoding="utf-8").split("\n---", 1)[0]
+    metadata = yaml.safe_load(front_matter.lstrip("-")) or {}
+    version = metadata.get("kommparl-version")
+    if not isinstance(version, str) or not VERSION_NUMBER.match(version):
+        report.error(where, "kommparl-version fehlt oder ist keine Versionsnummer in Anführungszeichen, zum Beispiel \"0.1\"")
+        return None
+    if version not in str(metadata.get("title", "")):
+        report.error(where, "der Titel nennt die Version {} nicht".format(version))
+    return version
+
+
+def version_tuple(version):
+    return tuple(int(part) for part in version.split("."))
+
+
+def validate_namespace(report):
+    """Kennungen von kommParl liegen im Namensraum und passen zur Version des Dokuments."""
+    version = read_version(report)
+    if version is None:
+        return None, 0
+    current = version_tuple(version)
+    paths = (
+        sorted(SOURCE_DIR.glob("*.md"))
+        + [STRINGS_FILE]
+        + sorted(SCHEMA_DIR.glob("*.json"))
+        + sorted(EXAMPLES_DIR.glob("*.json"))
+        + sorted(path for path in PROFILES_DIR.rglob("*") if path.suffix in (".json", ".ndjson"))
+    )
+    count = 0
+    for path in paths:
+        for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            for match in NAMESPACE_URL.finditer(line):
+                url = match.group(0)
+                where = "{} (Zeile {})".format(relative(path), number)
+                if not url.startswith(NAMESPACE):
+                    report.error(where, "'{}' liegt nicht im Namensraum {}".format(url, NAMESPACE))
+                    continue
+                rest = url[len(NAMESPACE):]
+                if not rest:
+                    continue  # Aufbau im Text, etwa https://schema.kommparl.de/<version>/
+                count += 1
+                segment = rest.split("/", 1)[0]
+                if "/" not in rest or not VERSION_NUMBER.match(segment):
+                    report.error(where, "'{}': auf den Namensraum folgt keine Version".format(url))
+                    continue
+                used = version_tuple(segment)
+                if used != current and not (1 <= used[0] and used < current):
+                    report.error(where, "'{}': Version {} passt nicht zur Version {} des Dokuments".format(url, segment, version))
+    return version, count
+
+
 def main():
     report = Report()
     schemas = load_schemas(report)
@@ -412,10 +492,13 @@ def main():
     examples = validate_examples(definitions, report)
     profile_schemas, profile_examples = validate_profiles(definitions, report)
     text_examples = validate_text_examples(report)
+    version, identifiers = validate_namespace(report)
 
     print("Objekttypen: {} Schemas und {} Beispiele geprüft.".format(len(schemas), examples))
     print("Profile: {} Schemas und {} Beispiele geprüft.".format(profile_schemas, profile_examples))
     print("Text: {} Beispiele mit ihrer Beispieldatei verglichen.".format(text_examples))
+    if version is not None:
+        print("Namensraum: {} Kennungen geprüft (Version {}).".format(identifiers, version))
     for note in report.notes:
         print("Hinweis – " + note)
     for error in report.errors:

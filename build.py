@@ -13,9 +13,14 @@ from argparse import ArgumentParser
 from glob import glob
 from os import path
 
+import yaml
+
 from scripts.json_schema2markdown import schema_to_markdown
 
 SPECIFICATION_NAME = 'kommParl'
+
+# Metadaten des Dokuments, darunter die Version (`kommparl-version`)
+SPECIFICATION_METADATA = 'src/0-00-metadata.md'
 
 SPECIFICATION_BUILD_ACTIONS = [
     'all',
@@ -79,7 +84,7 @@ def configure_argument_parser():
     parser.add_argument(
         '--version',
         '-V',
-        help='This will be displayed as version in the specification. Defaults to the draft state of the current commit',
+        help='This will be displayed as version in the specification. Defaults to the version from the metadata, marked as draft with the current commit unless HEAD carries the tag kommparl-<version>',
         action='store',
     )
 
@@ -132,23 +137,40 @@ def check_build_action(action):
         'Unknown build action: {}, choose one of: {}'.format(action, ', '.join(SPECIFICATION_BUILD_ACTIONS)))
 
 
+def get_document_version():
+    """Liest die Version des Dokuments (`kommparl-version`) aus den Metadaten."""
+    with open(SPECIFICATION_METADATA, encoding='utf-8') as fp:
+        front_matter = fp.read().split('\n---', 1)[0]
+    return str(yaml.safe_load(front_matter.lstrip('-'))['kommparl-version'])
+
+
 def get_default_version():
     """
-    kommParl ist ein Entwurf ohne eigene Versionsnummer. Bis zur ersten
-    Veröffentlichung kennzeichnet der Commit den Stand. Die Tags des Repositorys
-    stammen aus dem Original und bezeichnen dessen Versionen; sie werden hier
-    deshalb nicht ausgewertet.
+    Ein veröffentlichter Stand trägt das Tag `kommparl-<version>`; dann ist die
+    Version die Nummer aus dem Tag. Jeder andere Stand ist ein Arbeitsstand auf
+    dem Weg zu der Version aus den Metadaten; ihn kennzeichnet zusätzlich der
+    Commit. Die Tags `v…` des Repositorys stammen aus dem Original und
+    bezeichnen dessen Versionen; sie werden nicht ausgewertet.
     """
+    version = get_document_version()
     try:
+        tag = subprocess.check_output(
+            ['git', 'tag', '--points-at', 'HEAD', '--list', 'kommparl-*'],
+            universal_newlines=True,
+            stderr=subprocess.DEVNULL
+        ).split()
         commit = subprocess.check_output(
             ['git', 'rev-parse', '--short', 'HEAD'],
             universal_newlines=True,
             stderr=subprocess.DEVNULL
         ).strip()
     except (OSError, subprocess.CalledProcessError):
-        return 'entwurf'
+        return '{}-entwurf'.format(version)
 
-    return 'entwurf-g{}'.format(commit)
+    if 'kommparl-{}'.format(version) in tag:
+        return version
+
+    return '{}-entwurf-g{}'.format(version, commit)
 
 
 def check_available_tools(action):
