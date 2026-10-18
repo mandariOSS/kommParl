@@ -1,7 +1,8 @@
 # kommParl
 
-**Stand: Entwurf.** Es gibt noch keine veröffentlichte Version von kommParl. Inhalte, Bezeichner und
-Adressen können sich ändern.
+**Stand: Entwurf 0.1.** Es gibt noch keine veröffentlichte Version von kommParl; die erste Version, die
+kein Entwurf ist, wird kommParl 1.0 heißen. Bis dahin können sich Inhalte, Bezeichner und Adressen
+ändern.
 
 kommParl ist eine offene Schnittstelle für parlamentarische Informationssysteme. Sie beschreibt, wie
 Sitzungen, Tagesordnungen, Vorlagen, Beschlüsse, Gremien und Personen maschinenlesbar bereitgestellt
@@ -29,18 +30,31 @@ bleibt. Woher die Inhalte stammen und was wir geändert haben, steht in [HERKUNF
 
 | Teil | Stand |
 |---|---|
-| Grundlage: Text, Schemas und Beispiele von OParl 1.1 | übernommen |
-| Verhältnis zu OParl 1.1, Klarstellungen | Entwurf in Arbeit |
-| Profil Änderungsfeed, Profil Snapshot | Entwurf in Arbeit |
-| Weitere Profile (nicht öffentliche Mandatsdaten, Einreichung, Abstimmungen) | Ausblick |
+| Grundlage: Text, Schemas und Beispiele von OParl 1.1 (Kapitel 1 bis 4) | übernommen |
+| Verhältnis zu OParl 1.1 (Kapitel 5), Klarstellungen (Kapitel 6) | Entwurf |
+| Profil Änderungsfeed, Profil Snapshot (Kapitel 7) | Entwurf |
+| Weitere Profile: nicht öffentliche Mandatsdaten, Einreichung, Abstimmungen (Kapitel 8) | Ausblick |
 
 Die Entwürfe entstehen in diesem Repository über Issues und Pull Requests. Solange der Stand
 „Entwurf“ gilt, sollten sich Umsetzungen nicht auf Einzelheiten der Erweiterungen verlassen.
 
+## Versionen, Namensraum und Präfix
+
+- **Versionen:** eigene Zählung, unabhängig von OParl. Entwürfe tragen die Nummern 0.x, die erste
+  Version, die kein Entwurf ist, heißt **kommParl 1.0**.
+- **Namensraum:** Kennungen der Profile, Typ-URLs neuer Objekttypen und die `$id` der Schemas liegen
+  unter `https://schema.kommparl.de/<version>/`. Jeder Entwurfsstand vergibt sie unter seiner
+  eigenen Nummer; ab kommParl 1.0 sind sie dauerhaft.
+- **Präfix:** Eigenschaften, die kommParl den Objekten aus OParl 1.1 hinzufügt, tragen das Präfix
+  `kommparl:`, zum Beispiel `kommparl:conformsTo`.
+
+Die Regeln stehen in Kapitel 5 der Spezifikation („Verhältnis zu OParl 1.1“).
+
 ## Die Spezifikation bauen
 
 Der Text liegt als Markdown in `src/`, das Datenmodell als JSON in `schema/`, die Beispiele in
-`examples/`. `build.py` fügt daraus mit [pandoc](https://pandoc.org/) ein Dokument zusammen.
+`examples/`, die Schemas und Beispiele der Profile in `profiles/`. `build.py` fügt daraus mit
+[pandoc](https://pandoc.org/) ein Dokument zusammen.
 
 ### Schemas und Beispiele prüfen
 
@@ -49,8 +63,8 @@ python3 -m pip install -r requirements.txt
 python3 build.py test
 ```
 
-Die Prüfung stellt fest, ob die Schemas in sich stimmig sind und ob jedes Beispiel das Schema seines
-Objekttyps erfüllt.
+Die Prüfung stellt fest, ob die Schemas in sich stimmig sind, ob jedes Beispiel sein Schema erfüllt
+und ob die Beispiele im Text mit den Beispieldateien übereinstimmen.
 
 ### HTML und PDF erzeugen
 
@@ -92,6 +106,7 @@ Artefakt am jeweiligen Lauf.
 | `src/` | Text der Spezifikation (Markdown) |
 | `schema/` | Datenmodell: ein Schema je Objekttyp, Beschreibungstexte in `strings.yml` |
 | `examples/` | Beispiele, die im Text erscheinen und gegen die Schemas geprüft werden |
+| `profiles/` | je Profil die JSON-Schemas und geprüfte Beispiele |
 | `scripts/` | Hilfsskripte für Build und Prüfung |
 | `resources/` | Vorlagen und Gestaltung der Ausgabeformate |
 | `locales/` | aus dem Original übernommene, unvollständige englische Übersetzung von OParl 1.1 |
@@ -101,6 +116,9 @@ Branches:
 - `main` ist der Arbeitsstand von kommParl. Pull Requests richten sich gegen `main`.
 - `master` ist der unveränderte Stand des Originals, von dem kommParl ausgeht. Dieser Branch wird
   nicht bearbeitet.
+
+Tags der Form `kommparl-<version>` bezeichnen veröffentlichte Versionen von kommParl. Bisher gibt es
+keine. Die Tags `v1.0` bis `v1.1.1` stammen aus dem Original und bezeichnen Versionen von OParl.
 
 ## Mitwirken
 
@@ -133,8 +151,10 @@ compatible superset: every valid OParl 1.1 output remains valid, and additional 
 described as optional profiles. kommParl is an independent project; it is not published by the
 OParl initiative and is not a version of OParl.
 
-Status: draft, no release yet. The specification text is written in German. To check schemas and
-examples run `python3 build.py test`; to build the HTML document run `python3 build.py html`
-(requires pandoc, Graphviz, Ghostscript and ImageMagick). Contributions are welcome, see
+Status: draft 0.1, nothing released yet; the first version that is not a draft will be kommParl 1.0.
+Identifiers live under `https://schema.kommparl.de/<version>/`, added properties use the prefix
+`kommparl:`. The specification text is written in German. To check schemas and examples run
+`python3 build.py test`; to build the HTML document run `python3 build.py html` (requires pandoc,
+Graphviz, Ghostscript and ImageMagick). Contributions are welcome, see
 [CONTRIBUTING.md](CONTRIBUTING.md). Licence: CC BY-SA 4.0, same as the original; see
 [HERKUNFT.md](HERKUNFT.md) for attribution and changes.

@@ -149,7 +149,7 @@ def table_body(propspace, schema, typespace):
 def json_examples_to_md(examples_folder, name):
     md = ""
     filepath = os.path.join(examples_folder, name)
-    examples = glob.glob(filepath + "-[0-9][0-9].json")
+    examples = sorted(glob.glob(filepath + "-[0-9][0-9].json"))
     for nr, examplepath in enumerate(examples):
         # TODO: localize examples
         if len(examples) == 1:

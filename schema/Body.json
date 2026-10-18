@@ -206,6 +206,16 @@
             "references": "Organization",
             "cardinality": "1:1"
         },
+        "kommparl:changes": {
+            "description": "{{ Body.properties.kommparl:changes.description }}",
+            "type": "string",
+            "format": "url"
+        },
+        "kommparl:snapshot": {
+            "description": "{{ Body.properties.kommparl:snapshot.description }}",
+            "type": "string",
+            "format": "url"
+        },
         "keyword": {
             "type": "array",
             "items": {

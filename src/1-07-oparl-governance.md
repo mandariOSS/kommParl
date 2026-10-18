@@ -1,5 +1,11 @@
 ## OParl Governance {#oparl-governance}
 
+> **Hinweis (kommParl):** Dieser Abschnitt beschreibt die Governance von OParl.
+> Vorschläge und Fragen zu kommParl gehören in das Repository von kommParl
+> (<https://github.com/mandariOSS/kommParl>), nicht in den Issue-Tracker von
+> OParl. Wie dort über Änderungen entschieden wird, steht in der Datei
+> `CONTRIBUTING.md`.
+
 Im Verlauf der Weiterentwicklung können wie bei jedem Standardisierungsprozess
 Konflikte über die Ausrichtung und die Implementierung entstehen. Ist dies der
 Fall, so sollte als erstes der

@@ -1,0 +1,16 @@
+{
+    "id": "https://oparl.example.org/body/0",
+    "type": "https://schema.oparl.org/1.1/Body",
+    "system": "https://oparl.example.org/",
+    "name": "Beispielstadt",
+    "license": "https://www.govdata.de/dl-de/by-2-0",
+    "organization": "https://oparl.example.org/body/0/organizations/",
+    "person": "https://oparl.example.org/body/0/persons/",
+    "meeting": "https://oparl.example.org/body/0/meetings/",
+    "paper": "https://oparl.example.org/body/0/papers/",
+    "legislativeTerm": [],
+    "kommparl:changes": "https://oparl.example.org/body/0/changes",
+    "kommparl:snapshot": "https://oparl.example.org/body/0/snapshot",
+    "created": "2014-01-08T14:28:31+01:00",
+    "modified": "2026-09-30T09:00:00+02:00"
+}
