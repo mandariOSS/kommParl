@@ -114,3 +114,10 @@ bis 4 ist unverändert bis auf drei gekennzeichnete Hinweise. Geändert wurde:
 | `profiles/` | neu: JSON-Schemas und Beispiele der Profile Änderungsfeed und Snapshot |
 | `scripts/validate.py` | prüft zusätzlich die Schemas und Beispiele der Profile, vergleicht Beispiele im Text mit den Beispieldateien und prüft, dass alle Kennungen im Namensraum `https://schema.kommparl.de/<version>/` liegen und zur Version des Dokuments passen |
 | `scripts/json_schema2markdown.py` | mehrere Beispiele je Objekttyp erscheinen in fester Reihenfolge |
+
+**05.11.2026 – Klarstellungen aus der ersten Umsetzung.** Geändert wurde:
+
+| Datei | Änderung |
+|---|---|
+| `src/6-00-klarstellungen.md` | `license`: Der Wert ist an jedem Objekt eine URL; die Schemas des Originals bleiben unverändert, Clients behandeln andere Werte nicht als Fehler |
+| `src/7-02-profil-snapshot.md` | Objektzeilen: `text` eines `oparl:File` darf im Snapshot entfallen |

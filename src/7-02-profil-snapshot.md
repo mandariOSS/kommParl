@@ -81,6 +81,9 @@ Für die Objektzeilen gilt:
 - Gelöschte Objekte sind nicht enthalten.
 - Dateiinhalte sind nicht enthalten. Der Snapshot enthält die
   `oparl:File`-Objekte; die Dateien ruft der Client über `accessUrl` ab.
+  Die Eigenschaft `text` eines `oparl:File` **darf** entfallen, weil sie den
+  Snapshot sehr groß machen kann; der Client ruft sie bei Bedarf unter der
+  `id` der Datei ab.
 - Die Reihenfolge der Objektzeilen ist nicht festgelegt.
 
 **Beispiel** (gekürzt; jede Zeile ist im Snapshot ungekürzt und ohne Umbruch)
