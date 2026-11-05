@@ -66,7 +66,12 @@ Ergänzend empfiehlt kommParl:
 
 - Ein Server **sollte** `license` mindestens am `oparl:System` oder an jedem
   `oparl:Body` angeben, damit für jedes Objekt eine Lizenz feststeht.
-- Der Wert ist eine URL. Sie **sollte** aus einem verbreiteten Verzeichnis
+- Der Wert ist an jedem Objekt eine URL; OParl 1.1 spricht von der
+  „Lizenz-URL“. Die Schemas des Originals legen das Format nur an
+  `oparl:System` und `oparl:Body` fest. kommParl ändert die Schemas nicht:
+  Ein Server **sollte** an jedem Objekt eine URL angeben, ein Client **sollte**
+  einen anderen Wert nicht als Fehler behandeln.
+- Die URL **sollte** aus einem verbreiteten Verzeichnis
   stammen, damit Clients Lizenzen zuordnen können, zum Beispiel
   `https://www.govdata.de/dl-de/by-2-0` oder
   `https://creativecommons.org/licenses/by/4.0/`.
