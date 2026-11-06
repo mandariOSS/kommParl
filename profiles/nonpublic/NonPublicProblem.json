@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://schema.kommparl.de/0.1/profile/nonpublic/Problem.json",
-    "title": "Problem",
+    "$id": "https://schema.kommparl.de/0.1/profile/nonpublic/NonPublicProblem.json",
+    "title": "NonPublicProblem",
     "description": "Fehler der nichtöffentlichen Ausgabe als Problem nach RFC 9457, Medientyp application/problem+json (Profil Nichtöffentliches, Entwurf). Weitere Angaben sind erlaubt.",
     "type": "object",
     "required": [

@@ -320,7 +320,7 @@ Für diese Metadaten lautet die Adresse
 
 Fehler meldet der Server als Problem nach RFC 9457 mit dem Medientyp
 `application/problem+json` und dem Inhalt nach dem Schema
-`profiles/nonpublic/Problem.json`, statt des Fehlerobjekts aus
+`profiles/nonpublic/NonPublicProblem.json`, statt des Fehlerobjekts aus
 [Ausnahmebehandlung](#ausnahmebehandlung).
 
 Statuscode | Bedeutung
@@ -330,7 +330,7 @@ Statuscode | Bedeutung
 `404`      | Das Objekt gibt es nicht, oder der Aufrufer darf es nicht sehen.
 `429`      | Zu viele Anfragen. Der Server **sollte** den Header `Retry-After` senden.
 
-~~~~~  {.json beispiel="profiles/nonpublic/examples/Problem-01.json"}
+~~~~~  {.json beispiel="profiles/nonpublic/examples/NonPublicProblem-01.json"}
 {
     "type": "about:blank",
     "title": "Nicht authentifiziert",
