@@ -13,13 +13,13 @@ Anmeldung über OAuth 2.0 und OpenID Connect. Welche Person was sehen darf,
 entscheidet dabei der Server nach dem Recht der Körperschaft; die öffentliche
 Schnittstelle bleibt davon unberührt und ohne Anmeldung nutzbar.
 
-## Profil Einreichung {#ausblick-einreichung}
+## Einreichung: Signaturen und Benachrichtigungen {#ausblick-einreichung}
 
-Ein weiteres Profil soll beschreiben, wie Anträge, Anfragen und Rückmeldungen
-elektronisch bei einem parlamentarischen Informationssystem eingereicht werden
-und wie Einreichende den Bearbeitungsstand abrufen. Form, Fristen und
-Zuständigkeiten regelt weiterhin die Geschäftsordnung der Körperschaft, nicht
-die Schnittstelle.
+Das [Profil Einreichung](#profil-einreichung) beschreibt bisher nur
+Einreichungen, für die die Textform genügt. Eine Erweiterung soll Signaturen
+beschreiben, wo die Geschäftsordnung sie verlangt. Offen ist außerdem, wie ein
+Server Einreichende über einen neuen Bearbeitungsstand benachrichtigt, ohne dass
+sie regelmäßig nachfragen.
 
 ## Abstimmungen {#ausblick-abstimmungen}
 

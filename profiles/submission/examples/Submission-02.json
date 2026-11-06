@@ -1,0 +1,35 @@
+{
+    "id": "https://oparl.example.org/body/0/submissions/117",
+    "type": "https://schema.kommparl.de/0.1/Submission",
+    "body": "https://oparl.example.org/body/0",
+    "submissionType": "question",
+    "name": "Zustand der Radwege",
+    "proposalText": "Wie viele Schäden an Radwegen hat die Verwaltung 2026 erfasst, und wann werden sie behoben?",
+    "originator": "https://oparl.example.org/organization/7",
+    "originatorName": "Fraktion A",
+    "status": "converted",
+    "statusHistory": [
+        {
+            "status": "submitted",
+            "date": "2026-10-12T16:40:03+02:00"
+        },
+        {
+            "status": "registered",
+            "date": "2026-10-13T09:15:00+02:00"
+        },
+        {
+            "status": "inReview"
+        },
+        {
+            "status": "converted",
+            "date": "2026-10-20T11:30:00+02:00"
+        }
+    ],
+    "receiptNumber": "A/2026/0117",
+    "receivedAt": "2026-10-12T16:40:03+02:00",
+    "contentDigest": "sha-256=:zLbsirP0q8pHTPOjQGwNnnKdz4n9d9vN9U2KtiMZXQk=:",
+    "paper": "https://oparl.example.org/paper/749",
+    "withdraw": "https://oparl.example.org/body/0/submissions/117/withdraw",
+    "created": "2026-10-12T16:40:03+02:00",
+    "modified": "2026-10-20T11:30:00+02:00"
+}

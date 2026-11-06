@@ -1,0 +1,10 @@
+{
+    "id": "https://oparl.example.org/body/0/uploads/3f9a",
+    "type": "https://schema.kommparl.de/0.1/SubmissionUpload",
+    "name": "Lageplan.pdf",
+    "mediaType": "application/pdf",
+    "size": 48213,
+    "contentDigest": "sha-256=:qtf0XwGcEb2RXSyTlmw2qQc7aD1WMahAv4zGKRnr+KM=:",
+    "created": "2026-11-06T09:58:40+01:00",
+    "expires": "2026-11-07T09:58:40+01:00"
+}

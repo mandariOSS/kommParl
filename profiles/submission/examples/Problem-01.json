@@ -1,0 +1,7 @@
+{
+    "type": "https://oparl.example.org/probleme/ruecknahme-nicht-zulaessig",
+    "title": "Konflikt",
+    "status": 409,
+    "detail": "Die Einreichung ist bereits in eine Vorlage überführt und lässt sich nicht mehr zurücknehmen.",
+    "instance": "/body/0/submissions/117/withdraw"
+}

@@ -1,0 +1,55 @@
+{
+    "type": "https://schema.kommparl.de/0.1/SubmissionRules",
+    "body": "https://oparl.example.org/body/0",
+    "acceptedTypes": [
+        "motion",
+        "amendment",
+        "question",
+        "resolution",
+        "other"
+    ],
+    "acceptedProperties": [
+        "reasoningText",
+        "financialImpactText",
+        "urgent",
+        "urgencyReason",
+        "targetOrganization",
+        "targetDate",
+        "originator",
+        "coSigner",
+        "contact",
+        "upload"
+    ],
+    "requiredProperties": [
+        "reasoningText"
+    ],
+    "formRequirement": "text",
+    "withdrawableStatus": [
+        "submitted",
+        "registered",
+        "inReview",
+        "accepted"
+    ],
+    "deadline": [
+        {
+            "submissionType": "motion",
+            "daysBeforeMeeting": 14,
+            "description": "Anträge spätestens 14 Tage vor der Sitzung des zuständigen Gremiums"
+        }
+    ],
+    "rulesOfProcedure": "https://www.example.org/ortsrecht/geschaeftsordnung",
+    "upload": {
+        "maxSize": 52428800,
+        "mediaTypes": [
+            "application/pdf",
+            "image/png",
+            "image/jpeg"
+        ]
+    },
+    "originator": [
+        {
+            "id": "https://oparl.example.org/organization/7",
+            "name": "Fraktion A"
+        }
+    ]
+}
