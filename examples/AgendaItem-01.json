@@ -1,0 +1,15 @@
+{
+    "id": "https://oparl.example.org/nonpublic/agendaitem/903",
+    "type": "https://schema.oparl.org/1.1/AgendaItem",
+    "meeting": "https://oparl.example.org/nonpublic/meeting/281",
+    "number": "3",
+    "order": 3,
+    "name": "Ankauf von Flächen für das Baugebiet Am Mühlenbach",
+    "public": true,
+    "result": "Beschlossen",
+    "resolutionText": "Der Ausschuss empfiehlt dem Rat, die Flächen anzukaufen.",
+    "kommparl:nonPublicResolutionText": "Der Kaufpreis beträgt höchstens 1,2 Mio. Euro.",
+    "kommparl:publicId": "https://oparl.example.org/agendaitem/903",
+    "created": "2026-10-20T09:00:00+02:00",
+    "modified": "2026-11-12T18:40:00+01:00"
+}
