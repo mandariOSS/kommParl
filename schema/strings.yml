@@ -46,6 +46,9 @@ de:
     Endzeitpunkt des Tagesordnungspunktes als Datum/Uhrzeit. Bei zukünftigen
     Tagesordnungspunkten ist dies der geplante Zeitpunkt, bei einer
     stattgefundenen **kann** es der tatsächliche Endzeitpunkt sein.
+  "AgendaItem.properties.kommparl:nonPublic.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `true`, wenn das Objekt nicht öffentlich ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
+  "AgendaItem.properties.kommparl:nonPublicResolutionText.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: nichtöffentlicher Teil des Beschlusstexts; `resolutionText` behält den öffentlichen Teil. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
+  "AgendaItem.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
   Person.description: |
     Jede natürliche Person, die in der parlamentarischen Arbeit tätig und insbesondere
     Mitglied in einer Gruppierung ([oparl:Organization](#oparl_organization)) ist, wird
@@ -78,6 +81,7 @@ de:
     Ein Bild der Person. Aus Kompatibilitätsgründen wird **empfohlen, nur die Bildformate JPEG und PNG zu verwenden. Es sollten keine Bilder ausgeliefert werden, die nur als Platzhalter gedacht sind.
   Person.properties.life.description: Kurzer Informationstext zur Person. Eine Länge von weniger als 300 Zeichen ist **empfohlen**
   Person.properties.lifeSource.description: Angabe der Quelle, aus der die Informationen für `life` stammen. Bei Angabe von `life` ist diese Eigenschaft **empfohlen**
+  "Person.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
   File.description: |
     Ein Objekt vom Typ `oparl:File` repräsentiert eine Datei, beispielsweise eine PDF-Datei, ein RTF-Dokument oder ein Bild.  Es hält Metadaten zu der Datei sowie URLs zum Zugriff auf die Datei bereit.
 
@@ -105,11 +109,14 @@ de:
   File.properties.agendaItem.description: Rückreferenzen auf AgendaItem-Objekte. Wird nur dann ausgegeben, wenn das File-Objekt nicht als eingebettetes Objekt aufgerufen wird.
   File.properties.paper.description: Rückreferenzen auf Paper-Objekte. Wird nur dann ausgegeben, wenn das File-Objekt nicht als eingebettetes Objekt aufgerufen wird.
   File.properties.person.description: Rückreferenz auf die Person, deren Bild die Datei darstellt. Wird nur dann ausgegeben, wenn das File-Objekt nicht als eingebettetes Objekt aufgerufen wird.
+  "File.properties.kommparl:nonPublic.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `true`, wenn das Objekt nicht öffentlich ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
+  "File.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
   LegislativeTerm.description: Dieser Objekttyp dient der Beschreibung einer Wahlperiode.
   LegislativeTerm.properties.body.description: Rückreferenz auf die Körperschaft, welche nur dann ausgegeben werden muss, wenn das LegislativeTerm-Objekt einzeln abgerufen wird, d.h. nicht Teil einer internen Ausgabe ist.
   LegislativeTerm.properties.name.description: Nutzerfreundliche Bezeichnung der Wahlperiode.
   LegislativeTerm.properties.startDate.description: Der erste Tag der Wahlperiode.
   LegislativeTerm.properties.endDate.description: Der letzte Tag der Wahlperiode.
+  "LegislativeTerm.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
   Body.description: |
     Der Objekttyp oparl:Body dient dazu, eine Körperschaft zu repräsentieren. Eine Körperschaft ist in den meisten Fällen eine Gemeinde, eine Stadt oder ein Landkreis.
     In der Regel sind auf einem OParl-Server Daten von genau einer Körperschaft gespeichert und es wird daher auch nur ein Body-Objekt ausgegeben. Sind auf dem Server jedoch Daten von mehreren Körperschaften gespeichert, **muss** für jede Körperschaft ein eigenes Body-Objekt ausgegeben werden.
@@ -141,6 +148,7 @@ de:
   Body.properties.mainOrganization.description: Das zentrale Gremium einer Körperschaft. Bei einer Stadt wäre das z.B. die Vollversammlung des Stadtrats, beim Bundestag das Plenum.
   "Body.properties.kommparl:changes.description": "Ergänzung von kommParl: URL des Änderungsfeeds dieser Körperschaft. Siehe [Profil Änderungsfeed](#profil-aenderungsfeed)."
   "Body.properties.kommparl:snapshot.description": "Ergänzung von kommParl: URL des Snapshots dieser Körperschaft. Siehe [Profil Snapshot](#profil-snapshot)."
+  "Body.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
   "Body.properties.kommparl:submission.description": "Ergänzung von kommParl: URL der Einreichungen bei dieser Körperschaft. Dort reichen angemeldete Personen ein und rufen ihre Einreichungen ab. Siehe [Profil Einreichung](#profil-einreichung)."
   "Body.properties.kommparl:submissionUpload.description": "Ergänzung von kommParl: URL, unter der angemeldete Personen Anlagen zu einer Einreichung hochladen. Siehe [Profil Einreichung](#profil-einreichung)."
   "Body.properties.kommparl:submissionRules.description": "Ergänzung von kommParl: URL der Einreichungsregeln dieser Körperschaft. Siehe [Profil Einreichung](#profil-einreichung)."
@@ -153,6 +161,8 @@ de:
   Consultation.properties.organization.description: Gremium, in dem die Drucksache beraten wird. Hier kann auch eine mit Liste von Gremien angegeben werden (die verschiedenen `oparl:Body` und `oparl:System` angehören können). Die Liste ist dann geordnet. Das erste Gremium der Liste ist federführend.
   Consultation.properties.authoritative.description: Drückt aus, ob bei dieser Beratung ein Beschluss zu der Drucksache gefasst wird oder wurde (`true`) oder nicht (`false`).
   Consultation.properties.role.description: Rolle oder Funktion der Beratung. Zum Beispiel Anhörung, Entscheidung, Kenntnisnahme, Vorberatung usw.
+  "Consultation.properties.kommparl:nonPublic.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `true`, wenn das Objekt nicht öffentlich ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
+  "Consultation.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
   Location.description: Dieser Objekttyp dient dazu, einen Ortsbezug formal abzubilden. Ortsangaben können sowohl aus Textinformationen bestehen (beispielsweise dem Namen einer Straße/eines Platzes oder eine genaue Adresse) als auch aus Geodaten. Ortsangaben sind auch nicht auf einzelne Positionen beschränkt, sondern können eine Vielzahl von Positionen, Flächen, Strecken etc. abdecken.
   Location.properties.description.description: Textuelle Beschreibung eines Orts, z. B. in Form einer Adresse.
   Location.properties.geojson.description: |
@@ -178,6 +188,8 @@ de:
   Location.properties.persons.description: |
     Rückreferenzen auf Person-Objekte. Wird nur dann ausgegeben, wenn das Location-Objekt
     nicht als eingebettetes Objekt aufgerufen wird.
+  "Location.properties.kommparl:nonPublic.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `true`, wenn das Objekt nicht öffentlich ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
+  "Location.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
   Organization.description: Dieser Objekttyp dient dazu, Gruppierungen von Personen abzubilden, die in der parlamentarischen Arbeit eine Rolle spielen. Dazu zählen in der Praxis insbesondere Fraktionen und Gremien.
   Organization.properties.body.description: Körperschaft, zu der diese Gruppierung gehört.
   Organization.properties.name.description: Offizielle (lange) Form des Namens der Gruppierung.
@@ -195,6 +207,7 @@ de:
   Organization.properties.externalBody.description: Externer OParl Body, der dieser Organisation entspricht. Diese Eigenschaft ist dafür gedacht auf eventuelle konkretere OParl-Schnittstellen zu verweisen. Ein Beispiel hierfür wäre eine Stadt, die sowohl ein übergreifendes parlamentarisches Informationssystem, als auch bezirksspezifische Systeme hat.
   Organization.properties.memberCount.description: Die Anzahl der Mitglieder des Gremiums, einschließlich der Mitglieder ohne Stimmrecht. Diese Zahl entspricht der rechtlich festgelegten Mitgliederzahl und damit nicht zwangsläufig der Anzahl der aktiven `Membership`-Objekten dieses Gremiums, da z.B. auch für Vertreter Mitgliedschaften angegeben seien können.
   Organization.properties.votingMemberCount.description: 'Der Anzahl der stimmberechtigten Mitglieder. Diese Zahl entspricht nicht zwangsläufig der Anzahl der aktiven `Membership`-Objekten dieses Gremiums mit `"votingRight": true`, sondern der rechtlich festgelegten Zahl an stimmberechtigten Mitgliedern, die z.B. zur Bestimmung der Beschlussfähigkeit verwendet werden kann.'
+  "Organization.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
   Membership.description: Über Objekte dieses Typs wird die Mitgliedschaft von Personen in Gruppierungen dargestellt. Diese Mitgliedschaften können zeitlich begrenzt sein. Zudem kann abgebildet werden, dass eine Person eine bestimmte Rolle bzw. Position innerhalb der Gruppierung innehat, beispielsweise den Vorsitz einer Fraktion.
   Membership.properties.person.description: Rückreferenz auf Person, welches nur dann ausgegeben werden muss, wenn das Membership-Objekt einzeln abgerufen wird, d.h. nicht Teil einer internen Ausgabe ist.
   Membership.properties.organization.description: Die Gruppierung, in der die Person Mitglied ist oder war.
@@ -203,6 +216,7 @@ de:
   Membership.properties.startDate.description: Datum, an dem die Mitgliedschaft beginnt.
   Membership.properties.endDate.description: Datum, an dem die Mitgliedschaft endet.
   Membership.properties.onBehalfOf.description: "Die Gruppierung, für die die Person in der unter `organization` angegebenen Organisation sitzt. Beispiel: Mitgliedschaft als Vertreter einer Ratsfraktion, einer Gruppierung oder einer externen Organisation."
+  "Membership.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
   Meeting.description: |
     Eine Sitzung ist die Versammlung einer oder mehrerer Gruppierungen (oparl:Organization) zu einem bestimmten Zeitpunkt an einem bestimmten Ort.
 
@@ -221,6 +235,8 @@ de:
   Meeting.properties.verbatimProtocol.description: Wortprotokoll zur Sitzung. Diese Eigenschaft kann selbstverständlich erst nach dem Stattfinden der Sitzung vorkommen.
   Meeting.properties.auxiliaryFile.description: Dateianhang zur Sitzung. Hiermit sind Dateien gemeint, die üblicherweise mit der Einladung zu einer Sitzung verteilt werden, und die nicht bereits über einzelne Tagesordnungspunkte referenziert sind.
   Meeting.properties.agendaItem.description: Tagesordnungspunkte der Sitzung. Die Reihenfolge ist relevant. Es kann Sitzungen ohne TOPs geben.
+  "Meeting.properties.kommparl:nonPublic.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `true`, wenn das Objekt nicht öffentlich ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
+  "Meeting.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
   "Meeting.properties.kommparl:attendanceResponse.description": "Ergänzung von kommParl: URL, unter der eine geladene Person ihre Rückmeldung zur Ladung abgibt und abruft (Teilnahme, Absage, Vertretung). Siehe [Profil Einreichung](#einreichung-rueckmeldung)."
   "Meeting.properties.kommparl:invitationReceipt.description": "Ergänzung von kommParl: URL, unter der eine geladene Person den Empfang der Ladung bestätigt. Siehe [Profil Einreichung](#einreichung-empfang)."
   System.description: |
@@ -238,6 +254,8 @@ de:
   System.properties.website.description: URL der Website des parlamentarischen Informationssystems
   System.properties.vendor.description: URL der Website des Softwareanbieters, von dem die OParl-Server-Software stammt.
   System.properties.product.description: URL zu Informationen über die auf dem System genutzte OParl-Server-Software
+  "System.properties.kommparl:nonPublicSystem.description": "Ergänzung von kommParl: URL des `oparl:System`-Objekts der nichtöffentlichen Ausgabe dieses Systems. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
+  "System.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
   Paper.description: |
     Dieser Objekttyp dient der Abbildung von Drucksachen in der parlamentarischen Arbeit, wie zum Beispiel Anfragen, Anträgen und Beschlussvorlagen.
     Drucksachen werden in Form einer Beratung (oparl:Consultation) im Rahmen eines Tagesordnungspunkts (oparl:AgendaItem) einer Sitzung (oparl:Meeting) behandelt.
@@ -258,3 +276,5 @@ de:
   Paper.properties.underDirectionOf.description: Federführung. Amt oder Abteilung, für die Inhalte oder Beantwortung der Drucksache verantwortlich.
   Paper.properties.originatorOrganization.description: Urheber der Drucksache, falls der Urheber eine Gruppierung ist. Es können auch mehrere Gruppierungen angegeben werden.
   Paper.properties.consultation.description: Beratungen der Drucksache.
+  "Paper.properties.kommparl:nonPublic.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `true`, wenn das Objekt nicht öffentlich ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."
+  "Paper.properties.kommparl:publicId.description": "Ergänzung von kommParl, nur in der nichtöffentlichen Ausgabe: `id` desselben Objekts in der öffentlichen Ausgabe, wenn es dort abrufbar ist. Siehe [Profil Nichtöffentliches](#profil-nichtoeffentlich)."

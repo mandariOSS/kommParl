@@ -1,0 +1,7 @@
+{
+    "type": "about:blank",
+    "title": "Keine Berechtigung",
+    "status": 403,
+    "detail": "Dem Zugriffstoken fehlt ein Scope für diese Ausgabe.",
+    "instance": "/nonpublic/meetings/"
+}

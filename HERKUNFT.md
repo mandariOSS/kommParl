@@ -135,3 +135,20 @@ bis 4 ist unverändert bis auf drei gekennzeichnete Hinweise. Geändert wurde:
 | `schema/strings.yml` | Beschreibungen der fünf ergänzten Eigenschaften |
 | `examples/Body-03.json`, `examples/Meeting-02.json` | neu: Beispiele mit den ergänzten Eigenschaften |
 | `profiles/submission/` | neu: JSON-Schemas und Beispiele des Profils Einreichung |
+
+**06.11.2026 – Profil Nichtöffentliches (Entwurf).** Geändert wurde:
+
+| Datei | Änderung |
+|---|---|
+| `src/7-04-profil-nichtoeffentlich.md` | neu: Profil Nichtöffentliches – eigene, geschützte Ausgabe nichtöffentlicher Inhalte mit Anmeldung nach OAuth 2.0 (RFC 9700), OpenID Connect und RFC 9728, für Personen und für an eine Körperschaft gebundene Dienste (`private_key_jwt`, RFC 7523) |
+| `src/7-00-profile.md` | nennt das neue Profil; die Regeln zu CORS und Fehlern gelten für die öffentlichen Profile |
+| `src/5-00-verhaeltnis-zu-oparl.md` | Kennung des neuen Profils in der Tabelle der Kennungen |
+| `src/8-00-ausblick.md` | Abschnitt zum Profil für nichtöffentliche Inhalte ersetzt durch die geplante Weiterentwicklung des Profils |
+| `README.md` | Stand der Arbeit: Profile Einreichung und Nichtöffentliches als Entwurf |
+| `schema/System.json` | Eigenschaft `kommparl:nonPublicSystem` ergänzt |
+| `schema/*.json` (alle zwölf Objekttypen) | Eigenschaft `kommparl:publicId` ergänzt |
+| `schema/Meeting.json`, `AgendaItem.json`, `Paper.json`, `Consultation.json`, `File.json`, `Location.json` | Eigenschaft `kommparl:nonPublic` ergänzt |
+| `schema/AgendaItem.json` | Eigenschaft `kommparl:nonPublicResolutionText` ergänzt |
+| `schema/strings.yml` | Beschreibungen der ergänzten Eigenschaften |
+| `examples/System-03.json`, `examples/Meeting-03.json`, `examples/AgendaItem-01.json` | neu: Beispiele mit den ergänzten Eigenschaften. Die Beispiele des Originals sind unverändert |
+| `profiles/nonpublic/` | neu: JSON-Schemas und Beispiele des Profils (Metadaten der geschützten Ressource, Fehler) |

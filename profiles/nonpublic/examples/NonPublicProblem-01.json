@@ -1,0 +1,7 @@
+{
+    "type": "about:blank",
+    "title": "Nicht authentifiziert",
+    "status": 401,
+    "detail": "Für diese Ausgabe ist ein gültiges Zugriffstoken nötig.",
+    "instance": "/nonpublic/meetings/"
+}

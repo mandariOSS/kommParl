@@ -4,14 +4,19 @@ Die folgenden Themen sind noch nicht ausgearbeitet. Sie werden als eigene
 Entwürfe folgen und über Issues und Pull Requests im Repository von kommParl
 besprochen. Die Abschnitte legen nichts fest.
 
-## Profil für nicht öffentliche Mandatsdaten {#ausblick-mandat}
+## Weiterentwicklung des Profils Nichtöffentliches {#ausblick-mandat}
 
-Mitglieder von Vertretungen und Ausschüssen brauchen für ihre Arbeit auch
-Unterlagen, die nicht öffentlich sind. Ein eigenes Profil soll beschreiben, wie
-berechtigte Personen solche Inhalte über einen getrennten Endpunkt abrufen, mit
-Anmeldung über OAuth 2.0 und OpenID Connect. Welche Person was sehen darf,
-entscheidet dabei der Server nach dem Recht der Körperschaft; die öffentliche
-Schnittstelle bleibt davon unberührt und ohne Anmeldung nutzbar.
+Das [Profil Nichtöffentliches](#profil-nichtoeffentlich) beschreibt in diesem
+Entwurf den Abruf. Folgen sollen:
+
+- ein Änderungsfeed der nichtöffentlichen Ausgabe, der auch meldet, wenn ein
+  Aufrufer ein Objekt nicht mehr sehen darf, damit Clients ihre Kopien ohne
+  vollständigen Abgleich löschen können,
+- eine Auskunft, aus welchem Grund eine Person ein Objekt sieht (Mitgliedschaft,
+  Stellvertretung, Aufgabe in der Verwaltung), und welche Nutzungsregeln der
+  Körperschaft für Speicherung und Weitergabe gelten,
+- an den Client gebundene Tokens (DPoP, RFC 9449),
+- eine Stufe für Inhalte, die über „nichtöffentlich“ hinaus vertraulich sind.
 
 ## Einreichung: Signaturen und Benachrichtigungen {#ausblick-einreichung}
 

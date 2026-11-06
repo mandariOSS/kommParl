@@ -71,6 +71,7 @@ kommParl, Entwurfsstand 0.1        | `https://schema.kommparl.de/0.1/`
 Profil Änderungsfeed               | `https://schema.kommparl.de/0.1/profile/changes`
 Profil Snapshot                    | `https://schema.kommparl.de/0.1/profile/snapshot`
 Profil Einreichung                 | `https://schema.kommparl.de/0.1/profile/submission`
+Profil Nichtöffentliches           | `https://schema.kommparl.de/0.1/profile/nonpublic`
 
 Die Kennungen gelten für den Entwurfsstand 0.1. Jeder weitere Entwurfsstand und
 kommParl 1.0 vergeben eigene Kennungen (siehe

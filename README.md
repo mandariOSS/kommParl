@@ -32,8 +32,8 @@ bleibt. Woher die Inhalte stammen und was wir geändert haben, steht in [HERKUNF
 |---|---|
 | Grundlage: Text, Schemas und Beispiele von OParl 1.1 (Kapitel 1 bis 4) | übernommen |
 | Verhältnis zu OParl 1.1 (Kapitel 5), Klarstellungen (Kapitel 6) | Entwurf |
-| Profil Änderungsfeed, Profil Snapshot (Kapitel 7) | Entwurf |
-| Weitere Profile: nicht öffentliche Mandatsdaten, Einreichung, Abstimmungen (Kapitel 8) | Ausblick |
+| Profil Änderungsfeed, Profil Snapshot, Profil Einreichung, Profil Nichtöffentliches (Kapitel 7) | Entwurf |
+| Weitere Themen: Abstimmungen (Kapitel 8) | Ausblick |
 
 Die Entwürfe entstehen in diesem Repository über Issues und Pull Requests. Solange der Stand
 „Entwurf“ gilt, sollten sich Umsetzungen nicht auf Einzelheiten der Erweiterungen verlassen.

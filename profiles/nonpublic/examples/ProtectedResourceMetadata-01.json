@@ -1,0 +1,15 @@
+{
+    "resource": "https://oparl.example.org/nonpublic/",
+    "authorization_servers": [
+        "https://login.example.org"
+    ],
+    "scopes_supported": [
+        "council.nonpublic.read",
+        "body.read"
+    ],
+    "bearer_methods_supported": [
+        "header"
+    ],
+    "resource_name": "Beispielstadt, nichtöffentliche Ausgabe",
+    "resource_documentation": "https://oparl.example.org/hilfe/nichtoeffentlich"
+}
