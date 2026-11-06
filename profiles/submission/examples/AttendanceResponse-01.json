@@ -1,0 +1,9 @@
+{
+    "type": "https://schema.kommparl.de/0.1/AttendanceResponse",
+    "meeting": "https://oparl.example.org/meeting/281",
+    "response": "notAttending",
+    "substituteRequested": true,
+    "respondedAt": "2026-11-06T18:30:00+01:00",
+    "acknowledgedAt": "2026-11-05T08:12:40+01:00",
+    "acceptsResponses": true
+}

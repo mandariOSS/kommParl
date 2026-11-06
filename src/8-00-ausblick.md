@@ -18,13 +18,13 @@ Entwurf den Abruf. Folgen sollen:
 - an den Client gebundene Tokens (DPoP, RFC 9449),
 - eine Stufe für Inhalte, die über „nichtöffentlich“ hinaus vertraulich sind.
 
-## Profil Einreichung {#ausblick-einreichung}
+## Einreichung: Signaturen und Benachrichtigungen {#ausblick-einreichung}
 
-Ein weiteres Profil soll beschreiben, wie Anträge, Anfragen und Rückmeldungen
-elektronisch bei einem parlamentarischen Informationssystem eingereicht werden
-und wie Einreichende den Bearbeitungsstand abrufen. Form, Fristen und
-Zuständigkeiten regelt weiterhin die Geschäftsordnung der Körperschaft, nicht
-die Schnittstelle.
+Das [Profil Einreichung](#profil-einreichung) beschreibt bisher nur
+Einreichungen, für die die Textform genügt. Eine Erweiterung soll Signaturen
+beschreiben, wo die Geschäftsordnung sie verlangt. Offen ist außerdem, wie ein
+Server Einreichende über einen neuen Bearbeitungsstand benachrichtigt, ohne dass
+sie regelmäßig nachfragen.
 
 ## Abstimmungen {#ausblick-abstimmungen}
 

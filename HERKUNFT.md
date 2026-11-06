@@ -122,6 +122,20 @@ bis 4 ist unverändert bis auf drei gekennzeichnete Hinweise. Geändert wurde:
 | `src/6-00-klarstellungen.md` | `license`: Der Wert ist an jedem Objekt eine URL; die Schemas des Originals bleiben unverändert, Clients behandeln andere Werte nicht als Fehler |
 | `src/7-02-profil-snapshot.md` | Objektzeilen: `text` eines `oparl:File` darf im Snapshot entfallen |
 
+**06.11.2026 – Profil Einreichung (Entwurf).** Geändert wurde:
+
+| Datei | Änderung |
+|---|---|
+| `src/7-03-profil-einreichung.md` | neu: Kapitel „Profil Einreichung“ (Anmeldung, Einreichungsregeln, Anlagen, Einreichen mit Eingangsbestätigung, Bearbeitungsstand, Rücknahme, Rückmeldung zur Ladung, Empfangsbestätigung) |
+| `src/7-00-profile.md` | nennt das Profil Einreichung und seine eigenen Regeln für Anmeldung und Fehler |
+| `src/5-00-verhaeltnis-zu-oparl.md` | Kennung des Profils Einreichung in der Tabelle der Kennungen |
+| `src/8-00-ausblick.md` | Abschnitt „Profil Einreichung“ ersetzt durch die offenen Punkte Signaturen und Benachrichtigungen |
+| `schema/Body.json` | Eigenschaften `kommparl:submission`, `kommparl:submissionUpload` und `kommparl:submissionRules` ergänzt |
+| `schema/Meeting.json` | Eigenschaften `kommparl:attendanceResponse` und `kommparl:invitationReceipt` ergänzt |
+| `schema/strings.yml` | Beschreibungen der fünf ergänzten Eigenschaften |
+| `examples/Body-03.json`, `examples/Meeting-02.json` | neu: Beispiele mit den ergänzten Eigenschaften |
+| `profiles/submission/` | neu: JSON-Schemas und Beispiele des Profils Einreichung |
+
 **06.11.2026 – Profil Nichtöffentliches (Entwurf).** Geändert wurde:
 
 | Datei | Änderung |
@@ -130,11 +144,11 @@ bis 4 ist unverändert bis auf drei gekennzeichnete Hinweise. Geändert wurde:
 | `src/7-00-profile.md` | nennt das neue Profil; die Regeln zu CORS und Fehlern gelten für die öffentlichen Profile |
 | `src/5-00-verhaeltnis-zu-oparl.md` | Kennung des neuen Profils in der Tabelle der Kennungen |
 | `src/8-00-ausblick.md` | Abschnitt zum Profil für nichtöffentliche Inhalte ersetzt durch die geplante Weiterentwicklung des Profils |
-| `README.md` | Stand der Arbeit: Profil Nichtöffentliches als Entwurf |
+| `README.md` | Stand der Arbeit: Profile Einreichung und Nichtöffentliches als Entwurf |
 | `schema/System.json` | Eigenschaft `kommparl:nonPublicSystem` ergänzt |
 | `schema/*.json` (alle zwölf Objekttypen) | Eigenschaft `kommparl:publicId` ergänzt |
 | `schema/Meeting.json`, `AgendaItem.json`, `Paper.json`, `Consultation.json`, `File.json`, `Location.json` | Eigenschaft `kommparl:nonPublic` ergänzt |
 | `schema/AgendaItem.json` | Eigenschaft `kommparl:nonPublicResolutionText` ergänzt |
 | `schema/strings.yml` | Beschreibungen der ergänzten Eigenschaften |
-| `examples/System-03.json`, `examples/Meeting-02.json`, `examples/AgendaItem-01.json` | neu: Beispiele mit den ergänzten Eigenschaften. Die Beispiele des Originals sind unverändert |
+| `examples/System-03.json`, `examples/Meeting-03.json`, `examples/AgendaItem-01.json` | neu: Beispiele mit den ergänzten Eigenschaften. Die Beispiele des Originals sind unverändert |
 | `profiles/nonpublic/` | neu: JSON-Schemas und Beispiele des Profils (Metadaten der geschützten Ressource, Fehler) |

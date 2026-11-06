@@ -1,0 +1,20 @@
+{
+    "submissionType": "motion",
+    "name": "Sichere Schulwege an der Lindenstraße",
+    "proposalText": "Der Rat beauftragt die Verwaltung, bis zum 31.03.2027 ein Konzept für sichere Schulwege an der Lindenstraße vorzulegen.",
+    "reasoningText": "Eltern und Schulen melden seit Beginn des Schuljahres gefährliche Situationen an der Kreuzung.",
+    "financialImpactText": "Keine",
+    "targetOrganization": "https://oparl.example.org/organization/34",
+    "targetDate": "2026-12-03",
+    "originator": "https://oparl.example.org/organization/7",
+    "coSigner": [
+        "Max Mustermann"
+    ],
+    "contact": {
+        "name": "Erika Mustermann",
+        "email": "fraktion@example.org"
+    },
+    "upload": [
+        "https://oparl.example.org/body/0/uploads/3f9a"
+    ]
+}

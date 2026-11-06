@@ -89,6 +89,16 @@ nicht öffentlich ist, **muss** die Eigenschaft `kommparl:nonPublic` mit dem Wer
 `oparl:File` und `oparl:Location`. Ein nichtöffentlicher Tagesordnungspunkt hat
 außerdem `public` mit dem Wert `false`, wie in OParl 1.1 vorgesehen.
 
+Eine Beratung (`oparl:Consultation`) ist nichtöffentlich, wenn ihre Drucksache
+nichtöffentlich ist oder wenn sie Angaben zu einer nichtöffentlichen Sitzung oder
+einem nichtöffentlichen Tagesordnungspunkt enthält, etwa das beratende Gremium,
+die Rolle oder einen Verweis auf die Sitzung oder den Tagesordnungspunkt.
+
+Zeigt die öffentliche Ausgabe einen Teil eines nichtöffentlichen Objekts, etwa
+den Termin einer nichtöffentlichen Sitzung oder die Beratung einer
+veröffentlichten Drucksache in einer nichtöffentlichen Sitzung, trägt das Objekt
+in der nichtöffentlichen Ausgabe `kommparl:nonPublic` und `kommparl:publicId`.
+
 **Verweise und eingebettete Objekte.** Nichtöffentliche Objekte stehen in
 denselben Eigenschaften aus OParl 1.1 wie öffentliche, etwa ein
 nichtöffentlicher Tagesordnungspunkt in `agendaItem` einer öffentlichen Sitzung
@@ -106,7 +116,7 @@ Typ               | Eigenschaft                        | Inhalt
 Eine öffentliche Sitzung mit einem öffentlichen und einem nichtöffentlichen
 Tagesordnungspunkt in der nichtöffentlichen Ausgabe:
 
-~~~~~  {.json beispiel="examples/Meeting-02.json"}
+~~~~~  {.json beispiel="examples/Meeting-03.json"}
 {
     "id": "https://oparl.example.org/nonpublic/meeting/281",
     "type": "https://schema.oparl.org/1.1/Meeting",
@@ -235,7 +245,9 @@ Für diese Metadaten lautet die Adresse
 - Die Person meldet sich beim Autorisierungsserver an; ihre Identität kommt über
   OpenID Connect Core 1.0. Der Autorisierungsserver **muss** für Tokens mit
   Zugriff auf die nichtöffentliche Ausgabe eine Anmeldung mit einem zweiten
-  Faktor verlangen.
+  Faktor verlangen. Maßgeblich ist die Anmeldung, aus der das Token hervorgeht:
+  Dass das Konto einen zweiten Faktor eingerichtet hat, genügt nicht. War die
+  Anmeldung ohne zweiten Faktor, muss die Person sich erneut anmelden.
 - Spätestens sieben Tage nach der Anmeldung **muss** die Person sich erneut
   anmelden: Danach gibt der Autorisierungsserver aus einem Refresh-Token keine
   Zugriffstokens für die nichtöffentliche Ausgabe mehr aus.
@@ -259,7 +271,12 @@ Für diese Metadaten lautet die Adresse
   die nichtöffentliche Ausgabe **nicht** verwendet werden.
 - Für das JWT gilt:
     - `iss` und `sub` sind die Client-ID des Dienstes.
-    - `aud` ist die URL des Token-Endpunkts.
+    - `aud` ist der Issuer Identifier des Autorisierungsservers (RFC 8414,
+      `issuer` in seinen Metadaten) als einzelne Zeichenkette, keine Liste. Der
+      Autorisierungsserver **muss** ein JWT mit einem anderen Wert ablehnen, auch
+      mit der URL seines Token-Endpunkts. So kann ein anderer
+      Autorisierungsserver, dem der Dienst mit demselben Schlüssel ein JWT
+      geschickt hat, es nicht einlösen (siehe draft-ietf-oauth-rfc7523bis).
     - `exp` liegt höchstens fünf Minuten in der Zukunft.
     - `jti` ist eindeutig. Der Autorisierungsserver **muss** ein JWT ablehnen,
       dessen `jti` er bis zum Ablauf schon einmal angenommen hat.
@@ -279,8 +296,9 @@ Für diese Metadaten lautet die Adresse
   Unterlagen von Ausschüssen erhalten, denen sie nicht angehören, ob eine
   Stellvertretung Unterlagen nur für die Dauer des Vertretungsfalls sieht und ob
   ein Mitwirkungsverbot den Zugriff auf einen Tagesordnungspunkt und seine
-  Unterlagen sperrt. Endet ein Recht, gilt das ab der nächsten Anfrage, auch für
-  schon ausgestellte Tokens.
+  Unterlagen sperrt, also auch auf die dort beratenen Drucksachen und ihre
+  Anlagen, soweit sie nicht öffentlich sind. Endet ein Recht, gilt das ab der
+  nächsten Anfrage, auch für schon ausgestellte Tokens.
 - Ein Objekt, das der Aufrufer nicht sehen darf, gibt der Server ihm nicht aus:
   Es fehlt in Listen und eingebetteten Objekten, und der Abruf unter seiner `id`
   ergibt `404`. Der Server **darf** **nicht** verraten, ob es ein solches Objekt
