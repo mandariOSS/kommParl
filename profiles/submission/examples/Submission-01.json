@@ -1,0 +1,42 @@
+{
+    "id": "https://oparl.example.org/body/0/submissions/142",
+    "type": "https://schema.kommparl.de/0.1/Submission",
+    "body": "https://oparl.example.org/body/0",
+    "submissionType": "motion",
+    "name": "Sichere Schulwege an der Lindenstraße",
+    "proposalText": "Der Rat beauftragt die Verwaltung, bis zum 31.03.2027 ein Konzept für sichere Schulwege an der Lindenstraße vorzulegen.",
+    "reasoningText": "Eltern und Schulen melden seit Beginn des Schuljahres gefährliche Situationen an der Kreuzung.",
+    "financialImpactText": "Keine",
+    "targetOrganization": "https://oparl.example.org/organization/34",
+    "targetDate": "2026-12-03",
+    "coSigner": [
+        "Max Mustermann"
+    ],
+    "contact": {
+        "name": "Erika Mustermann",
+        "email": "fraktion@example.org"
+    },
+    "originator": "https://oparl.example.org/organization/7",
+    "originatorName": "Fraktion A",
+    "attachment": [
+        {
+            "name": "Lageplan.pdf",
+            "mediaType": "application/pdf",
+            "size": 48213,
+            "contentDigest": "sha-256=:qtf0XwGcEb2RXSyTlmw2qQc7aD1WMahAv4zGKRnr+KM=:"
+        }
+    ],
+    "status": "submitted",
+    "statusHistory": [
+        {
+            "status": "submitted",
+            "date": "2026-11-06T10:02:11+01:00"
+        }
+    ],
+    "receiptNumber": "A/2026/0142",
+    "receivedAt": "2026-11-06T10:02:11+01:00",
+    "contentDigest": "sha-256=:u8i8b/NM/OQbZNpv2ieeOq1DvUZs8krhR3rlw723zCA=:",
+    "withdraw": "https://oparl.example.org/body/0/submissions/142/withdraw",
+    "created": "2026-11-06T10:02:11+01:00",
+    "modified": "2026-11-06T10:02:11+01:00"
+}

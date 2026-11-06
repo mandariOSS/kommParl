@@ -121,3 +121,17 @@ bis 4 ist unverändert bis auf drei gekennzeichnete Hinweise. Geändert wurde:
 |---|---|
 | `src/6-00-klarstellungen.md` | `license`: Der Wert ist an jedem Objekt eine URL; die Schemas des Originals bleiben unverändert, Clients behandeln andere Werte nicht als Fehler |
 | `src/7-02-profil-snapshot.md` | Objektzeilen: `text` eines `oparl:File` darf im Snapshot entfallen |
+
+**06.11.2026 – Profil Einreichung (Entwurf).** Geändert wurde:
+
+| Datei | Änderung |
+|---|---|
+| `src/7-03-profil-einreichung.md` | neu: Kapitel „Profil Einreichung“ (Anmeldung, Einreichungsregeln, Anlagen, Einreichen mit Eingangsbestätigung, Bearbeitungsstand, Rücknahme, Rückmeldung zur Ladung, Empfangsbestätigung) |
+| `src/7-00-profile.md` | nennt das Profil Einreichung und seine eigenen Regeln für Anmeldung und Fehler |
+| `src/5-00-verhaeltnis-zu-oparl.md` | Kennung des Profils Einreichung in der Tabelle der Kennungen |
+| `src/8-00-ausblick.md` | Abschnitt „Profil Einreichung“ ersetzt durch die offenen Punkte Signaturen und Benachrichtigungen |
+| `schema/Body.json` | Eigenschaften `kommparl:submission`, `kommparl:submissionUpload` und `kommparl:submissionRules` ergänzt |
+| `schema/Meeting.json` | Eigenschaften `kommparl:attendanceResponse` und `kommparl:invitationReceipt` ergänzt |
+| `schema/strings.yml` | Beschreibungen der fünf ergänzten Eigenschaften |
+| `examples/Body-03.json`, `examples/Meeting-02.json` | neu: Beispiele mit den ergänzten Eigenschaften |
+| `profiles/submission/` | neu: JSON-Schemas und Beispiele des Profils Einreichung |

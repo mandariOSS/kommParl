@@ -1,0 +1,13 @@
+{
+    "type": "https://oparl.example.org/probleme/validierung",
+    "title": "Ungültiger Inhalt",
+    "status": 422,
+    "detail": "Die Einreichung ist unvollständig.",
+    "instance": "/body/0/submissions",
+    "errors": [
+        {
+            "pointer": "/reasoningText",
+            "detail": "Pflichtangabe nach der Geschäftsordnung"
+        }
+    ]
+}
