@@ -15,7 +15,6 @@
         "statusHistory",
         "receiptNumber",
         "receivedAt",
-        "contentDigest",
         "withdraw",
         "created",
         "modified"
@@ -185,7 +184,7 @@
             "$ref": "#/$defs/dateTime"
         },
         "contentDigest": {
-            "description": "Prüfsumme des Inhalts der Anfrage, mit der eingereicht wurde, im Format des Felds Content-Digest (RFC 9530).",
+            "description": "Prüfsumme des Inhalts der Anfrage, mit der eingereicht wurde, im Format des Felds Content-Digest (RFC 9530). Zwingend in der Antwort auf das Einreichen; kann bei Einreichungen fehlen, die nicht über dieses Profil kamen.",
             "$ref": "#/$defs/contentDigest"
         },
         "paper": {

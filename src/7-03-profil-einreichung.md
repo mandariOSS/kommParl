@@ -239,6 +239,8 @@ Anlagen lädt der Client vor dem Einreichen einzeln hoch: mit `POST` an
 `kommparl:submissionUpload`, als `multipart/form-data` mit genau einem Teil
 namens `file`, der den Dateinamen im Header `Content-Disposition` trägt.
 
+- Enthält die Anfrage nicht genau eine Datei im Teil `file`, antwortet der
+  Server mit `400`.
 - Der Server prüft Größe und Typ der Datei nach `upload` der
   [Einreichungsregeln](#einreichung-regeln). Ist die Datei zu groß, antwortet er
   mit `413`; nimmt er den Typ nicht an, mit `415`. Den Medientyp bestimmt der
@@ -389,7 +391,7 @@ Name              | Typ           | Beschreibung
 `statusHistory`   | array[object] | **ZWINGEND** Verlauf des Bearbeitungsstands, soweit der Server ihn festhält, ältester Eintrag zuerst, je mit `status` und, soweit bekannt, `date` (seit wann der Stand gilt). Der letzte Eintrag entspricht `status`.
 `receiptNumber`   | string        | **ZWINGEND** Eingangsnummer.
 `receivedAt`      | date-time     | **ZWINGEND** Eingangszeit.
-`contentDigest`   | string        | **ZWINGEND** Prüfsumme des Inhalts der Anfrage, mit der eingereicht wurde.
+`contentDigest`   | string        | Prüfsumme des Inhalts der Anfrage, mit der eingereicht wurde. **ZWINGEND** in der Antwort auf das Einreichen und danach unverändert. Bei Einreichungen, die nicht über dieses Profil kamen, kann sie fehlen.
 `paper`           | url           | Die Vorlage, die aus der Einreichung entstanden ist (`id` eines `oparl:Paper`), sobald die Person sie sehen darf.
 `withdraw`        | url           | **ZWINGEND** URL für die [Rücknahme](#einreichung-ruecknahme).
 `created`         | date-time     | **ZWINGEND** Zeitpunkt der Einreichung.
@@ -656,7 +658,7 @@ Statuscode | Bedeutung
 `200`      | Abruf, Rücknahme, Rückmeldung oder Empfangsbestätigung.
 `201`      | Einreichung oder hochgeladene Datei angelegt; der Header `Location` nennt die URL.
 `304`      | Bei einem [bedingten Abruf](#bedingte-abrufe): unverändert.
-`400`      | `Idempotency-Key` fehlt, der Inhalt ist kein JSON-Objekt, oder `Content-Digest` passt nicht zum Inhalt.
+`400`      | `Idempotency-Key` fehlt, der Inhalt ist kein JSON-Objekt, `Content-Digest` passt nicht zum Inhalt, oder beim Hochladen fehlt genau eine Datei.
 `401`      | Anmeldung fehlt oder Token ungültig.
 `403`      | Token ohne Person oder ohne Scope; die Person darf die Handlung nicht vornehmen.
 `404`      | Nicht gefunden, nicht sichtbar oder die Person ist nicht geladen.
