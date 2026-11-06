@@ -239,6 +239,8 @@ Anlagen lädt der Client vor dem Einreichen einzeln hoch: mit `POST` an
 `kommparl:submissionUpload`, als `multipart/form-data` mit genau einem Teil
 namens `file`, der den Dateinamen im Header `Content-Disposition` trägt.
 
+- Darf die Person bei der Körperschaft für keine Stelle einreichen, antwortet
+  der Server mit `403`, ohne die Datei anzunehmen.
 - Enthält die Anfrage nicht genau eine Datei im Teil `file`, antwortet der
   Server mit `400`.
 - Der Server prüft Größe und Typ der Datei nach `upload` der
@@ -280,8 +282,16 @@ Für hochgeladene Dateien gilt:
   **darf** sie in einer Einreichung verwenden, und nur bei derselben
   Körperschaft. Unter `id` liefert der Server mit `GET` das Objekt, nicht den
   Inhalt der Datei.
+- Eine Datei lässt sich in genau einer Einreichung verwenden. Eine Wiederholung
+  derselben Einreichung mit demselben `Idempotency-Key` gilt nicht als zweite
+  Verwendung.
 - Ein Server **darf** eine Datei nach Ablauf von `expires` löschen. Ist sie
-  Teil einer Einreichung geworden, gehört sie zu dieser.
+  Teil einer Einreichung geworden, gehört sie zu dieser. Nicht verwendete
+  Dateien **sollte** er nach Ablauf löschen, auch wenn die Person nichts mehr
+  hochlädt.
+- Ein Server **sollte** begrenzen, wie viele nicht verwendete Dateien eine
+  Person zugleich hochgeladen haben kann, und darüber hinaus mit `429`
+  antworten.
 - Ein Server **darf** hochgeladene Inhalte **nicht** so ausliefern, dass ein
   Browser sie als Seite darstellt oder Skripte darin ausführt.
 
@@ -468,10 +478,13 @@ die angemeldete Person sehen darf, als Liste mit `data`, `pagination` und
 `links` wie in [Objektlisten und Paginierung](#objektlisten-und-paginierung),
 die jüngste zuerst. Jedes Element von `data` ist eine Einreichung.
 
-Welche Einreichungen eine Person sieht, entscheidet der Server nach dem Recht der
-Körperschaft, in der Regel die Einreichungen der Stellen, für die sie einreichen
-darf. Fremde Einreichungen sind nicht auffindbar: Der Server antwortet mit
-`404`, nicht mit `403`.
+Welche Einreichungen eine Person sieht und zurücknehmen darf, entscheidet der
+Server nach dem Recht der Körperschaft. Er **sollte** ihr nur Einreichungen
+zeigen, die sie selbst eingereicht hat oder deren Inhalt sie auch ohne dieses
+Profil sehen darf. Eine Einreichung enthält Kontaktdaten und noch nicht
+veröffentlichte Texte; dass die Person für dieselbe Stelle einreichen darf,
+genügt dafür allein nicht. Fremde Einreichungen sind nicht auffindbar: Der
+Server antwortet mit `404`, nicht mit `403`.
 
 Für `status` und die Einträge in `statusHistory` sind diese Werte festgelegt:
 
