@@ -22,14 +22,9 @@
         },
         "status": {
             "description": "HTTP-Statuscode der Antwort.",
-            "enum": [
-                400,
-                401,
-                403,
-                404,
-                405,
-                429
-            ]
+            "type": "integer",
+            "minimum": 400,
+            "maximum": 599
         },
         "detail": {
             "description": "Erklärung zu diesem Fall. Sie nennt keine Inhalte, die der Aufrufer nicht sehen darf.",

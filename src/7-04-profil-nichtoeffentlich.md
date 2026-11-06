@@ -286,7 +286,7 @@ Für diese Metadaten lautet die Adresse
   ergibt `404`. Der Server **darf** **nicht** verraten, ob es ein solches Objekt
   gibt.
 - Arbeitsstände, die nicht für die Beratung bestimmt sind, etwa Entwürfe von
-  Drucksachen, **muss** der Server nicht ausgeben.
+  Drucksachen, **darf** der Server auslassen.
 - Personenbezogene Daten gibt die nichtöffentliche Ausgabe nur aus, soweit der
   Zweck es erfordert. Das Profil legt für `oparl:Person` keine weiteren
   Eigenschaften fest.
@@ -329,6 +329,7 @@ Statuscode | Bedeutung
 `403`      | Das Token hat keinen Scope für die Ausgabe (`WWW-Authenticate` mit `error="insufficient_scope"`), der Dienst ist an eine andere Körperschaft gebunden, oder der Aufrufer hat keinen Zugang zu dieser Körperschaft.
 `404`      | Das Objekt gibt es nicht, oder der Aufrufer darf es nicht sehen.
 `429`      | Zu viele Anfragen. Der Server **sollte** den Header `Retry-After` senden.
+`503`      | Der Server kann die Anfrage vorübergehend nicht bedienen, etwa weil er den Abruf nicht protokollieren kann. Er gibt dann keine Inhalte aus.
 
 ~~~~~  {.json beispiel="profiles/nonpublic/examples/NonPublicProblem-01.json"}
 {
